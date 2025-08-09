@@ -1,24 +1,17 @@
-# README
+# Sesh
+A Ruby on Rails web app for tracking bugs.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+Ruby Version: 3.2 or newer
 
-Things you may want to cover:
+## How to set up and run
+1. `git clone https://github.com/dfebs/sesh.git`
+1. `cd sesh`
+1. `bundle install`
+1. `bin/rails db:setup`
+1. `bin/rails server`
 
-* Ruby version
+## Todo
 
-* System dependencies
+## Bugs
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
