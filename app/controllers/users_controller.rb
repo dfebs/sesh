@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save then
       redirect_to new_session_path, notice: "User successfully created, time to log in!"
+    else
+      render :new, status: :unprocessable_entity 
     end
   end
 
