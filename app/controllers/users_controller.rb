@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: [:new, :create]
+  allow_unauthenticated_access only: [ :new, :create ]
   def show
     @user = Current.user
   end
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save then
       redirect_to new_session_path, notice: "User successfully created, time to log in!"
     else
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.expect user: [:email_address, :password, :password_confirmation]
+    params.expect user: [ :email_address, :password, :password_confirmation ]
   end
 end
