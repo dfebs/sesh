@@ -8,3 +8,20 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+p,
+label {
+    color: aliceblue
+}
+
+a {
+    color: royalblue
+}
