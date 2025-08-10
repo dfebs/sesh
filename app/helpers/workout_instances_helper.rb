@@ -1,0 +1,2 @@
+module WorkoutInstancesHelper
+end
