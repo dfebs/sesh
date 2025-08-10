@@ -1,5 +1,5 @@
 # Sesh
-A Ruby on Rails web app for tracking bugs.
+A Ruby on Rails web app for tracking workouts.
 
 ## Requirements
 Ruby Version: 3.2 or newer
