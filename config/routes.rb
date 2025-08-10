@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   root "users#show"
 
   resources :workouts
-  resources :workout_instances
-  resources :workout_sessions
+  resources :workout_sessions do
+    resources :workout_instances
+  end
   # resources :workout_sets, only: []
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
