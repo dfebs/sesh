@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_09_182905) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_10_193443) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -33,6 +33,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_09_182905) do
     t.integer "workout_template_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "workout_id", null: false
+    t.index ["workout_id"], name: "index_workout_instances_on_workout_id"
     t.index ["workout_session_id"], name: "index_workout_instances_on_workout_session_id"
     t.index ["workout_template_id"], name: "index_workout_instances_on_workout_template_id"
   end
@@ -63,7 +65,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_09_182905) do
 
   add_foreign_key "sessions", "users"
   add_foreign_key "workout_instances", "workout_sessions", on_delete: :cascade
-  add_foreign_key "workout_instances", "workout_templates", on_delete: :cascade
+  add_foreign_key "workout_instances", "workouts", on_delete: :cascade
   add_foreign_key "workout_sessions", "users", on_delete: :cascade
   add_foreign_key "workout_sets", "workout_instances", on_delete: :cascade
   add_foreign_key "workouts", "users", column: "author_id", on_delete: :cascade
