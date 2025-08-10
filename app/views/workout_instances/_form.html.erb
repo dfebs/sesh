@@ -1,0 +1,10 @@
+<%= form_with model: workout_instance do |form| %>
+  <%= form.label :workout %>
+  <%= form.select :workout, Current.user.workouts.map { |workout| workout.name } %>
+
+  <%= form.label :sets %>
+  <%= form.number_field :sets %>
+
+  <%= form.label :reps %>
+  <%= form.number_field :reps %>
+<% end %>
