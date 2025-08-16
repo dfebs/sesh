@@ -24,6 +24,7 @@
 
   <body>
     <% if authenticated? %>
+      <%= link_to "Home", root_path %>
       <%= button_to "Log Out", session_path, method: :delete %>
     <% end %>
     <%= yield %>
