@@ -12,7 +12,7 @@ class WorkoutSessionsController < ApplicationController
   end
 
   def create
-    @workout_session = WorkoutSession.nw
+    @workout_session = WorkoutSession.new
     @workout_session.user = Current.user
     debugger
     if @workout_session.save
