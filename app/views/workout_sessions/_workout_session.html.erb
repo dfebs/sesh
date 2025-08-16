@@ -1,5 +1,5 @@
 <h1><%= link_to "Workout Session #{workout_session.id}", workout_session_path(workout_session) %></h1>
-<%# workout_session.workout_instances.each do |workout_instance| %>
-<%#   render "workout_instance/workout_instance", workout_instance: workout_instance %>
-<%# end %>
+<div class="workout-instances">
+  <%= render "workout_instances/workout_instances", workout_session: workout_session %>
+</div>
 <h2><%= workout_session.user.email_address %></h2>
