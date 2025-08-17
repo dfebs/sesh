@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_17_173203) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_17_221725) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -30,13 +30,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_17_173203) do
 
   create_table "workout_instances", force: :cascade do |t|
     t.integer "workout_session_id", null: false
-    t.integer "workout_template_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "workout_id", null: false
     t.index ["workout_id"], name: "index_workout_instances_on_workout_id"
     t.index ["workout_session_id"], name: "index_workout_instances_on_workout_session_id"
-    t.index ["workout_template_id"], name: "index_workout_instances_on_workout_template_id"
   end
 
   create_table "workout_sessions", force: :cascade do |t|
