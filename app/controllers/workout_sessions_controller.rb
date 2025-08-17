@@ -14,7 +14,7 @@ class WorkoutSessionsController < ApplicationController
   def create
     @workout_session = WorkoutSession.new
     @workout_session.user = Current.user
-    debugger
+
     if @workout_session.save
       redirect_to @workout_session, notice: "Session successfully created"
     else
