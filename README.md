@@ -17,6 +17,7 @@ Ruby Version: 3.2 or newer
 - [ ] Have session show page allow you to add workout instances. Button with data -> new workout session form
 - [ ] Show workout instances in session
 - [ ] Look into chartjs
+- [ ] Have logic requiring that workout names must be unique per-user
 
 ## Bugs
 
