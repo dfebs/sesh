@@ -20,7 +20,7 @@ Ruby Version: 3.2 or newer
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
 - [ ] For later: maybe auto create sets from previous completed workout?
 - [ ] Add cancel button when about to add workout instance but change your mind
-- [ ] Look into chartjs
+- [ ] Look into chartjs - might be good for show workout, where it charts all previous workout instances
 - [ ] Have logic requiring that workout names must be unique per-user
 
 ## Bugs
