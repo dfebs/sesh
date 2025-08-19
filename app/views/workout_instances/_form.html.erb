@@ -1,10 +1,9 @@
-<%= form_with model: workout_instance do |form| %>
-  <%= form.label :workout %>
-  <%= form.select :workout, Current.user.workouts.map { |workout| workout.name } %>
+<%= turbo_frame_tag dom_id(workout_instance) do %>
+  <%= form_with model: [workout_session, workout_instance] do |form| %>
+    <%= form.label :workout_id, "Workout" %>
+    <%= form.collection_select :workout_id, Current.user.workouts, :id, :name %>
 
-  <%= form.label :sets %>
-  <%= form.number_field :sets %>
-
-  <%= form.label :reps %>
-  <%= form.number_field :reps %>
+    <%= form.submit %>
+    <%=  %>
+  <% end %>
 <% end %>
