@@ -14,8 +14,12 @@ Ruby Version: 3.2 or newer
 ## Todo
 - [x] Make base partial for sets
 - [x] Add weight/distance in sets
-- [ ] Have session show page allow you to add workout instances. Button with data -> new workout session form
-- [ ] Show workout instances in session
+- [x] Have session show page allow you to add workout instances. Button with data -> new workout session form
+- [x] Show workout instances in session
+- [x] Finish up create method for workout instances
+- [ ] Add ability to add and remove sets from workout instances inside of workout sessions
+- [ ] For later: maybe auto create sets from previous completed workout?
+- [ ] Add cancel button when about to add workout instance but change your mind
 - [ ] Look into chartjs
 - [ ] Have logic requiring that workout names must be unique per-user
 
