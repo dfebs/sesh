@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :workouts
   resources :workout_sessions do
-    resources :workout_instances
+    resources :workout_instances do
+      resources :workout_sets
+    end
   end
   # resources :workout_sets, only: []
 
