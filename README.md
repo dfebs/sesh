@@ -17,11 +17,15 @@ Ruby Version: 3.2 or newer
 - [x] Have session show page allow you to add workout instances. Button with data -> new workout session form
 - [x] Show workout instances in session
 - [x] Finish up create method for workout instances
+- [x] Add ability to add sets to workout instances inside of workout sessions
+- [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
+- [ ] Tie units to workout instead, so they don't have to put the unit in every set. Plus, workouts aren't gonna change units between sets anyway.
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
 - [ ] For later: maybe auto create sets from previous completed workout?
 - [ ] Add cancel button when about to add workout instance but change your mind
 - [ ] Look into chartjs - might be good for show workout, where it charts all previous workout instances
 - [ ] Have logic requiring that workout names must be unique per-user
+- [ ] Consider having another User model called TempUser, which can eventually be turned into a real user when they sign up. Maybe they share a concern or something?
 
 ## Bugs
-
+- [ ] Add workout instance has strange behavior when looking at all workout sessions
