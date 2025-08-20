@@ -1,3 +1,3 @@
 <%= turbo_stream.append "workout-instances" do %>
-  <%= render "workout_instances/workout_instance", workout_instance: @workout_instance %>
+  <%= render "workout_instances/workout_instance", workout_instance: @workout_instance, workout_session: @workout_instance.workout_session %>
 <% end %>
