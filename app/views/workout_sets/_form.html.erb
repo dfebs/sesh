@@ -1,0 +1,14 @@
+<%= turbo_frame_tag combined_dom_id(workout_session, workout_instance, workout_set) do %>
+  <%= form_with model: [workout_session, workout_instance, workout_set] do | form | %>
+    <%= form.label :reps %>
+    <%= form.number_field :reps, min: 0, max: 5000, required: true %>
+
+    <%= form.label :amount %>
+    <%= form.number_field :amount, min: 0, max: 5000, required: true %>
+
+    <%= form.label :unit %>
+    <%= form.select :unit, Constants::UNITS, required: true %>
+
+    <%= form.submit %>
+  <% end %>
+<% end %>
