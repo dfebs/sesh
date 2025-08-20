@@ -1,15 +1,15 @@
 <h1><%= link_to "Workout Session #{workout_session.id}", workout_session_path(workout_session) %></h1>
 <h2>Add workout</h2>
 
-<div id="workout-instances">
+<div id="<%= dom_id(workout_session, :workouts) %>">
   <%= render "workout_instances/workout_instances", workout_instances: workout_session.workout_instances %>
 </div>
 
 <%= link_to "Add Workout Instance", 
   new_workout_session_workout_instance_path(workout_session),
-  data: { turbo_frame: dom_id(WorkoutInstance.new) } 
+  data: { turbo_frame: combined_dom_id(workout_session, WorkoutInstance.new) } 
 %>
 
-<%= turbo_frame_tag dom_id(WorkoutInstance.new) %>
+<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) %>
 
 <h2><%= workout_session.user.email_address %></h2>

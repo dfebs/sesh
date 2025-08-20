@@ -28,4 +28,4 @@ Ruby Version: 3.2 or newer
 - [ ] Consider having another User model called TempUser, which can eventually be turned into a real user when they sign up. Maybe they share a concern or something?
 
 ## Bugs
-- [ ] Add workout instance has strange behavior when looking at all workout sessions
+- [x] Add workout instance has strange behavior when looking at all workout sessions

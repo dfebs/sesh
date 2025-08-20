@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(workout_instance) do %>
+<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) do %>
   <%= form_with model: [workout_session, workout_instance] do |form| %>
     <%= form.label :workout_id, "Workout" %>
     <%= form.collection_select :workout_id, Current.user.workouts, :id, :name %>
