@@ -6,9 +6,6 @@
     <%= form.label :amount %>
     <%= form.number_field :amount, min: 0, max: 5000, required: true %>
 
-    <%= form.label :unit %>
-    <%= form.select :unit, Constants::UNITS, required: true %>
-
     <%= form.submit %>
   <% end %>
 <% end %>
