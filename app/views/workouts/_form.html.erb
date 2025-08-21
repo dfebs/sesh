@@ -1,9 +1,9 @@
 <%= form_with model: workout do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name, required: true %>
 
   <%= form.label :description %>
-  <%= form.text_field :description %>
+  <%= form.text_field :description, required: true %>
  
   <%= form.submit %>
 <% end %>
