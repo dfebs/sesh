@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_20_012846) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_21_224819) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -41,6 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_20_012846) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false, null: false
     t.index ["user_id"], name: "index_workout_sessions_on_user_id"
   end
 
