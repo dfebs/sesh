@@ -4,6 +4,9 @@
 
   <%= form.label :description %>
   <%= form.text_field :description, required: true %>
+
+  <%= form.label :workout_type, "Workout Type" %>
+  <%= form.select :workout_type, Constants::WORKOUT_TYPES %>
  
   <%= form.submit %>
 <% end %>

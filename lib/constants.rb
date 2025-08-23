@@ -5,4 +5,10 @@ module Constants
     "mi",
     "km"
   ]
+
+  WORKOUT_TYPES = [
+    "Weight",
+    "Long Distance",
+    "Short Distance"
+  ]
 end

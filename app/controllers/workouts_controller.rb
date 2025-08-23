@@ -21,6 +21,6 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.expect workout: [ :name, :description ]
+    params.expect workout: [ :name, :description, :workout_type ]
   end
 end
