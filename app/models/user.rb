@@ -10,13 +10,13 @@ class User < ApplicationRecord
 
   private
   def create_user_config
-    UserConfig.new(
+    config = UserConfig.new(
       short_distance_unit: Constants::SHORT_DISTANCE_UNITS[0],
       long_distance_unit: Constants::LONG_DISTANCE_UNITS[0],
       weight_unit: Constants::WEIGHT_UNITS[0],
       user_id: self.id
     )
 
-    UserConfig.save!
+    config.save!
   end
 end
