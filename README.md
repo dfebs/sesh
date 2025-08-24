@@ -20,7 +20,7 @@ Ruby Version: 3.2 or newer
 - [x] Add ability to add sets to workout instances inside of workout sessions
 - [x] Create user config object, contains preferred units of each type. Short distance (m, ft), long distance (km, mi), and weight (kg, lbs)
 - [x] Tie units to user config instead, so they don't have to put the unit in every set. Plus, workouts aren't gonna change units between sets anyway.
-- [ ] Complete form for `new_from_templates` so that they are submitted through `create_from_templates`
+- [x] Complete form for `new_from_templates` so that they are submitted through `create_from_templates`
 - [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
 - [ ] For later: maybe auto create sets from previous completed workout?
@@ -28,6 +28,7 @@ Ruby Version: 3.2 or newer
 - [ ] Look into chartjs - might be good for show workout, where it charts all previous workout instances
 - [ ] Have logic requiring that workout names must be unique per-user
 - [ ] Consider having another User model called TempUser, which can eventually be turned into a real user when they sign up. Maybe they share a concern or something?
+- [ ] Low prio, might be worth making tag names unique. Remember tags are pre-generated though so probably won't be an issue for a while
 
 ## Bugs
 - [x] Add workout instance has strange behavior when looking at all workout sessions
