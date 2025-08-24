@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_22_003049) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_23_235844) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -18,6 +18,31 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_003049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "tag_registrations", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "workout_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_tag_registrations_on_tag_id"
+    t.index ["workout_id"], name: "index_tag_registrations_on_workout_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_configs", force: :cascade do |t|
+    t.string "short_distance_unit"
+    t.string "long_distance_unit"
+    t.string "weight_unit"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_configs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,6 +90,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_003049) do
   end
 
   add_foreign_key "sessions", "users"
+  add_foreign_key "tag_registrations", "tags"
+  add_foreign_key "tag_registrations", "workouts"
+  add_foreign_key "user_configs", "users"
   add_foreign_key "workout_instances", "workout_sessions", on_delete: :cascade
   add_foreign_key "workout_instances", "workouts", on_delete: :cascade
   add_foreign_key "workout_sessions", "users", on_delete: :cascade
