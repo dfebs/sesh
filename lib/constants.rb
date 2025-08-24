@@ -21,7 +21,6 @@ module Constants
   ]
 
   WORKOUT_TAGS = [
-    "Abs",
     "Core",
     "Legs",
     "Shoulders",
