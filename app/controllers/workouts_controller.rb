@@ -18,6 +18,9 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  def templates 
+  end
+
   private
 
   def workout_params

@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :users, only: [ :show, :create, :new ]
   root "users#show"
 
-  resources :workouts
+  resources :workouts do
+    member do
+      get "templates"
+    end
+  end
+
   resources :workout_sessions do
     resources :workout_instances do
       resources :workout_sets
