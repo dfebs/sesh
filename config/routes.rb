@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   root "users#show"
 
   resources :workouts do
-    member do
-      get "templates"
+    collection do
+      get "new_from_templates"
+      post "create_from_templates"
     end
   end
 
