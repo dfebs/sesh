@@ -1,8 +1,8 @@
 <h1>Workout Templates</h1>
 <%= form_with url: create_from_templates_workouts_path do |form| %>
-  <%= templates.each do |template| %>
-    <%= form.checkbox template[:name] %>
-    <%= label_tag template[:name] %> 
+  <% templates.each_with_index do |template, index| %>
+    <%= checkbox_tag "template_indices[]", index %>
+    <%= label_tag template[:name] %>
   <% end %>
 
   <%= form.submit %>
