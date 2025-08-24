@@ -36,6 +36,14 @@ module WorkoutTemplates
         "Core",
         "Biceps"
       ]
+    },
+    {
+      name: "Outdoor Run",
+      description: "--",
+      workout_type: "Long Distance",
+      tags: [
+        "Legs"
+      ]
     }
   ]
 end
