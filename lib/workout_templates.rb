@@ -2,6 +2,7 @@ module WorkoutTemplates
   WORKOUTS = [
     {
       name: "Push-Ups",
+      workout_type: "Weight",
       description: "--",
       tags: [
         "Chest",
@@ -12,6 +13,7 @@ module WorkoutTemplates
     },
     {
       name: "Russian Twists",
+      workout_type: "Weight",
       description: "--",
       tags: [
         "Core"
@@ -19,6 +21,7 @@ module WorkoutTemplates
     },
     {
       name: "Barbell Squats",
+      workout_type: "Weight",
       description: "--",
       tags: [
         "Legs"
@@ -27,6 +30,7 @@ module WorkoutTemplates
     {
       name: "Pull-Ups",
       description: "--",
+      workout_type: "Weight",
       tags: [
         "Upper Back",
         "Core",
