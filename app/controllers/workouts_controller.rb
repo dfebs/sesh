@@ -18,7 +18,10 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def templates 
+  def new_from_templates 
+    workouts = Current.user.workouts.map { |workout| workout.name }
+    @templates = WorkoutTemplates::WORKOUTS.select { |template| !workouts.include? template[:name] }
+  end
   end
 
   private
