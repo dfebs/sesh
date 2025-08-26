@@ -7,5 +7,6 @@
     <%= form.number_field :amount, min: 0, max: 5000, required: true %>
 
     <%= form.submit %>
+    <%= link_to "Cancel", workout_session_path(workout_session) %>
   <% end %>
 <% end %>
