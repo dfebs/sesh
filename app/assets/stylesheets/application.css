@@ -8,13 +8,13 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-
+@import "colors.css";
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
 }
 
 h1,
@@ -25,9 +25,9 @@ h5,
 h6,
 p,
 label {
-    color: aliceblue
+  color: var(--color-text);
 }
 
 a {
-    color: royalblue
+  color: var(--color-links);
 }
