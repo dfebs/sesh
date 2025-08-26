@@ -20,7 +20,7 @@ class WorkoutsController < ApplicationController
 
   def new_from_templates
     workouts = Current.user.workouts.map { |workout| workout.name }
-    @templates = WorkoutTemplates::WORKOUTS.select { |template| !workouts.include? template[:name] }
+    @templates = WorkoutTemplates::WORKOUTS.each_with_index.select { |template, _| !workouts.include? template[:name] }
   end
 
   def create_from_templates

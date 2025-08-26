@@ -21,7 +21,6 @@ Ruby Version: 3.2 or newer
 - [x] Create user config object, contains preferred units of each type. Short distance (m, ft), long distance (km, mi), and weight (kg, lbs)
 - [x] Tie units to user config instead, so they don't have to put the unit in every set. Plus, workouts aren't gonna change units between sets anyway.
 - [x] Complete form for `new_from_templates` so that they are submitted through `create_from_templates`
-- [ ] Fix issue where selecting a template doesn't create the correct template. Issue is in the new_from_template controller function and the form generated from it.
 - [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
 - [ ] For later: maybe auto create sets from previous completed workout?
@@ -33,3 +32,4 @@ Ruby Version: 3.2 or newer
 
 ## Bugs
 - [x] Add workout instance has strange behavior when looking at all workout sessions
+- [x] Fix issue where selecting a template doesn't create the correct template. Issue is in the new_from_template controller function and the form generated from it.
