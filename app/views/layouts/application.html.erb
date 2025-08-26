@@ -23,11 +23,7 @@
   </head>
 
   <body>
-    <% if authenticated? %>
-      <%= link_to "Home", root_path %>
-      <%= link_to "Workout Templates", new_from_templates_workouts_path %>
-      <%= button_to "Log Out", session_path, method: :delete %>
-    <% end %>
+    <%= render "layouts/navbar" %>
     <%= yield %>
   </body>
 </html>
