@@ -1,3 +1,7 @@
-<% workouts.each do |workout| %>
-  <%= render "workouts/workout", workout: workout %>
-<% end %>
+<div class="workouts">
+  <% workouts.each do |workout| %>
+    <div class="workout">
+      <%= render "workouts/workout", workout: workout %>
+    </div>
+  <% end %>
+</div>
