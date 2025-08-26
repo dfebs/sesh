@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :users, only: [ :show, :create, :new ]
-  root "users#show"
+  resources :users, only: [ :create, :new ]
+  root "workout_sessions#index"
 
   resources :workouts do
     collection do

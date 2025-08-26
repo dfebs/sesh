@@ -1,6 +1,0 @@
-<p><%= Current.user.email_address %><p>
-<%= link_to "My Workouts", workouts_path %>
-<%= render "workout_sessions/form", workout_session: WorkoutSession.new %>
-<h1>My Sessions</h1>
-<%= render "workout_sessions/workout_sessions", workout_sessions: @user.workout_sessions %>
-<p>TODO: Make session cards, which would be _workout_session_card.erb. Small session summaries</p>
