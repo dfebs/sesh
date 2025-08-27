@@ -23,6 +23,7 @@ Ruby Version: 3.2 or newer
 - [x] Complete form for `new_from_templates` so that they are submitted through `create_from_templates`
 - [x] Add cancel button when about to add workout instance but change your mind
 - [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
+- [ ] Add content to _workout.html.erb so that it shows up in the workout list page 
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
 - [ ] For later: maybe auto create sets from previous completed workout?
 - [ ] Look into chartjs - might be good for show workout, where it charts all previous workout instances

@@ -1,6 +1,17 @@
+@import "colors.css";
+
 .workouts {
   display: flex;
   flex-direction: row;
   gap: 20px;
   flex-wrap: wrap;
+  margin: 15px;
+}
+
+.workout {
+  background-color: var(--color-3);
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
 }
