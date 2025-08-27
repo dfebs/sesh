@@ -22,12 +22,14 @@ Ruby Version: 3.2 or newer
 - [x] Tie units to user config instead, so they don't have to put the unit in every set. Plus, workouts aren't gonna change units between sets anyway.
 - [x] Complete form for `new_from_templates` so that they are submitted through `create_from_templates`
 - [x] Add cancel button when about to add workout instance but change your mind
-- [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
 - [ ] Add content to _workout.html.erb so that it shows up in the workout list page 
+- [ ] Add a "sort by" section for workouts that does a serverside sort. Maybe filter by tags. Maybe a drop down could be added to add it to an existing workout session
+- [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
 - [ ] For later: maybe auto create sets from previous completed workout?
 - [ ] Look into chartjs - might be good for show workout, where it charts all previous workout instances
 - [ ] Have logic requiring that workout names must be unique per-user
+- [ ] Maybe make sessions taggable just like workouts. Perhaps we can use the pattern "taggable" and make workouttags more general?
 - [ ] Consider having another User model called TempUser, which can eventually be turned into a real user when they sign up. Maybe they share a concern or something?
 - [ ] Low prio, might be worth making tag names unique. Remember tags are pre-generated though so probably won't be an issue for a while
 
