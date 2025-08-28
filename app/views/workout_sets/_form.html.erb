@@ -3,7 +3,7 @@
     <%= form.label :reps %>
     <%= form.number_field :reps, min: 0, max: 5000, required: true %>
 
-    <%= form.label :amount %>
+    <%= form.label "Amount (#{Current.user.user_config.get_unit workout_instance.workout[:workout_type]})" %>
     <%= form.number_field :amount, min: 0, max: 5000, required: true %>
 
     <%= form.submit %>
