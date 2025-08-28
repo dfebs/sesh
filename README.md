@@ -22,7 +22,10 @@ Ruby Version: 3.2 or newer
 - [x] Tie units to user config instead, so they don't have to put the unit in every set. Plus, workouts aren't gonna change units between sets anyway.
 - [x] Complete form for `new_from_templates` so that they are submitted through `create_from_templates`
 - [x] Add cancel button when about to add workout instance but change your mind
-- [ ] Add content to _workout.html.erb so that it shows up in the workout list page 
+- [ ] Make a conditional in the set form such that it checks what unit is being used, then puts that form field with the right attribute name (amount_metric or amount_imp)
+- [ ] When set is about to be created, it will have an empty field of the _other_ metric so I'll want to fill that in with a conversion (e.g. lb -> kg)
+- [ ] Find a better way to get the preferred unit associated with a user
+- [ ] Add content to _workout.html.erb so that it shows up in the workout list page
 - [ ] Add a "sort by" section for workouts that does a serverside sort. Maybe filter by tags. Maybe a drop down could be added to add it to an existing workout session
 - [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
