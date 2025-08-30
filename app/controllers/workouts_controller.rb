@@ -7,6 +7,10 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new
   end
 
+  def show
+    # @workout = Workout.find(params[:workout_id])
+  end
+
   def create
     @workout = Workout.new(workout_params)
     @workout.author = Current.user
