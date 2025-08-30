@@ -39,5 +39,5 @@ Ruby Version: 3.2 or newer
 ## Bugs
 - [x] Add workout instance has strange behavior when looking at all workout sessions
 - [x] Fix issue where selecting a template doesn't create the correct template. Issue is in the new_from_template controller function and the form generated from it.
-- [ ] Fix issue where workout templates only insert the first instance of a selection in the form
+- [x] Fix issue where workout templates only insert the first instance of a selection in the form. (issue was just that I didn't seed the database)
 - [ ] Form doesn't reset when adding a workout set. Might actually be a good feature but worth checking anyway
