@@ -20,7 +20,7 @@ class WorkoutSetsController < ApplicationController
 
   private
   def workout_set_params
-    params.expect workout_set: [ :reps, :amount ]
+    params.expect workout_set: [ :reps, :amount_imp, :amount_metric ]
   end
 
   def get_workout_instance

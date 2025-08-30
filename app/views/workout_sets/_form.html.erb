@@ -3,8 +3,16 @@
     <%= form.label :reps %>
     <%= form.number_field :reps, min: 0, max: 5000, required: true %>
 
-    <%= form.label "Amount (#{Current.user.user_config.get_unit workout_instance.workout[:workout_type]})" %>
-    <%= form.number_field :amount, min: 0, max: 5000, required: true %>
+    <% preferred_unit = Current.user.user_config.get_unit workout_instance.workout[:workout_type] %>
+
+    <%= form.label "Amount #{preferred_unit}" %>
+    <% if Constants::UNIT_TYPES[preferred_unit] == "imperial" %>
+      <%= form.number_field :amount_imp, min: 0, max: 5000, required: true, step: :any %>
+    <% end %>
+
+    <% if Constants::UNIT_TYPES[preferred_unit] == "metric" %>
+      <%= form.number_field :amount_metric, min: 0, max: 5000, required: true, step: :any %>
+    <% end %>
 
     <%= form.submit %>
     <%= link_to "Cancel", workout_session_path(workout_session) %>
