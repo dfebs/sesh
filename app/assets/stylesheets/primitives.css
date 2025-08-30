@@ -9,6 +9,11 @@ label {
   color: var(--color-text);
 }
 
+p,
+a {
+  font-size: 16px;
+}
+
 a {
   color: var(--color-links);
 }

@@ -13,5 +13,7 @@
   border-radius: 10px;
   padding-left: 10px;
   padding-right: 10px;
-
+  box-shadow: 0 0 12px var(--color-2);
+  width: 20vw;
+  height: 20vh;
 }

@@ -24,8 +24,8 @@ Ruby Version: 3.2 or newer
 - [x] Add cancel button when about to add workout instance but change your mind
 - [x] Make a conditional in the set form such that it checks what unit is being used, then puts that form field with the right attribute name (amount_metric or amount_imp)
 - [x] When set is about to be created, it will have an empty field of the _other_ metric so I'll want to fill that in with a conversion (e.g. lb -> kg)
-- [ ] Find a better way to get the preferred unit associated with a user
-- [ ] Add content to _workout.html.erb so that it shows up in the workout list page
+- [x] Add content to _workout.html.erb so that it shows up in the workout list page
+- [ ] Make cards scale correctly when zooming
 - [ ] Add a "sort by" section for workouts that does a serverside sort. Maybe filter by tags. Maybe a drop down could be added to add it to an existing workout session
 - [ ] Make it so that workout sessions can't be "completed" unless there's at least 1 workout, and all workouts have at least 1 set
 - [ ] Add ability to add and remove sets from workout instances inside of workout sessions
@@ -40,4 +40,4 @@ Ruby Version: 3.2 or newer
 - [x] Add workout instance has strange behavior when looking at all workout sessions
 - [x] Fix issue where selecting a template doesn't create the correct template. Issue is in the new_from_template controller function and the form generated from it.
 - [x] Fix issue where workout templates only insert the first instance of a selection in the form. (issue was just that I didn't seed the database)
-- [ ] Form doesn't reset when adding a workout set. Might actually be a good feature but worth checking anyway
+- [ ] Form doesn't reset when adding a workout set. Might actually be a good feature but worth cleaning up anyway
