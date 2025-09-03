@@ -7,4 +7,8 @@ class WorkoutInstance < ApplicationRecord
   def volume
     workout_sets.sum { |set| set.amount * set.reps }
   end
+
+  def name
+    workout.name
+  end
 end

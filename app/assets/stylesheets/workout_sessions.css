@@ -1,0 +1,40 @@
+@import "colors.css";
+
+.session-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+
+.session-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: var(--color-3);
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0 0 12px var(--color-2);
+  width: 25rem;
+  height: 15rem;
+}
+
+.session-card a {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.session-card-workouts {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0px;
+  max-height: 8rem;
+}
+
+.session-card-workout {
+  color: var(--color-text);
+}

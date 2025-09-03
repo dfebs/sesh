@@ -1,0 +1,12 @@
+<div class="session-card">
+  
+  <%= link_to "Workout Session #{workout_session.id}", workout_session_path(workout_session) %>
+
+  <ul class="session-card-workouts">
+    <% workout_session.workout_instances.each do |instance| %>
+      <li class="session-card-workout">
+        <%= instance.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>
