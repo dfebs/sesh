@@ -1,3 +1,8 @@
 <%= form_with model: workout_session do |form| %>
-  <%= form.submit %>
+    <% if !workout_session.new_record? %>
+      <%= form.label :date_completed %>
+      <%= form.date_select :date_completed, end_year: Date.today.year, start_year: 2000, selected: Date.today %>
+    <% end %>
+
+    <%= form.submit %>
 <% end %>
