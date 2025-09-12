@@ -1,6 +1,7 @@
 class WorkoutSet < ApplicationRecord
   belongs_to :workout_instance
   has_one :workout, through: :workout_instance
+  has_one :workout_session, through: :workout_instance
   before_validation :update_all_units
 
   def preferred_unit

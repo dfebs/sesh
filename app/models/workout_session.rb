@@ -1,6 +1,7 @@
 class WorkoutSession < ApplicationRecord
   belongs_to :user
   has_many :workout_instances, dependent: :destroy
+  has_many :workout_sets, through: :workout_instances
 
   def completed?
     date_completed.present?
