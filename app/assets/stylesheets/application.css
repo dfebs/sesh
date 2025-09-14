@@ -16,3 +16,8 @@ body {
   padding: 0;
   background-color: var(--color-background);
 }
+
+.content {
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
