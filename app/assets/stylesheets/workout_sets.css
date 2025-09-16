@@ -1,0 +1,7 @@
+@import "colors.css";
+
+.workout_sets {
+  list-style-type: none;
+  color: var(--color-text);
+  padding: 0;
+}
