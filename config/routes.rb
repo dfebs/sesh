@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   end
 
   resources :workout_sessions do
-    resources :workout_instances do
-      resources :workout_sets
+    resources :workout_instances, shallow: true do
+      resources :workout_sets, shallow: true
     end
   end
 

@@ -1,7 +1,7 @@
 <h1><%= workout_instance.workout.name %></h1>
 
 <% if !workout_instance.workout_session.completed? %>
-  <%= link_to "Add Set", new_workout_session_workout_instance_workout_set_path(workout_session, workout_instance), data: { turbo_frame: combined_dom_id(workout_session, workout_instance, WorkoutSet.new) } %>
+  <%= link_to "Add Set", new_workout_instance_workout_set_path(workout_instance), data: { turbo_frame: combined_dom_id(workout_session, workout_instance, WorkoutSet.new) } %>
 <% end %>
 
 <%= render "workout_sets/workout_sets", workout_instance: workout_instance %>
