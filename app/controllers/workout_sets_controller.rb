@@ -6,6 +6,17 @@ class WorkoutSetsController < ApplicationController
     @workout_set = @workout_instance.workout_sets.new
   end
 
+  def destroy
+    @workout_set = WorkoutSet.find(params[:id])
+    @workout_session = @workout_set.workout_session
+    @workout_set.destroy!
+
+    respond_to do | format |
+      format.turbo_stream
+      format.html { redirect_to root_path, notice: "Deletion successful" }
+    end
+  end
+
   def create
     @workout_set = @workout_instance.workout_sets.new(workout_set_params)
     respond_to do | format |

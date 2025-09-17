@@ -1,9 +1,11 @@
-<% if workout_session.completed? %>
-  <p>Session completed on <%= workout_session.date_completed %></p>
-<% else %>
-  <% if workout_session.ready_for_completion? %>
-    <%= render "workout_sessions/form", workout_session: workout_session %>
+<div id="<%= dom_id(workout_session, :complete) %>">
+  <% if workout_session.completed? %>
+    <p>Session completed on <%= workout_session.date_completed %></p>
   <% else %>
-    <p>This workout session is not ready for completion. Be sure to have at least workout instance. All workout instances must have at least one set.</p>
+    <% if workout_session.ready_for_completion? %>
+      <%= render "workout_sessions/form", workout_session: workout_session %>
+    <% else %>
+      <p>This workout session is not ready for completion. Be sure to have at least workout instance. All workout instances must have at least one set.</p>
+    <% end %>
   <% end %>
-<% end %>
+</div>

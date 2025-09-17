@@ -15,8 +15,6 @@
 
 <%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) %>
 
-<div id="<%= dom_id(workout_session, :complete) %>"
-  <%= render "workout_sessions/complete_workout_session", workout_session: workout_session %>
-</div>
+<%= render "workout_sessions/complete_workout_session", workout_session: workout_session %>
 
 <h2><%= workout_session.user.email_address %></h2>
