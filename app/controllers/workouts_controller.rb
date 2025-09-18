@@ -16,7 +16,7 @@ class WorkoutsController < ApplicationController
     @workout.author = Current.user
 
     if @workout.save
-      redirect_to workouts_path, notice: "Workout successfuly created"
+      redirect_to workouts_path, notice: "Workout successfully created"
     else
       render :new, status: :unprocessable_entity
     end
