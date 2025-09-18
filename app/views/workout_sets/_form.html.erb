@@ -1,5 +1,11 @@
-<%= turbo_frame_tag combined_dom_id(workout_session, workout_instance, workout_set) do %>
-  <%= form_with model: [workout_instance, workout_set] do | form | %>
+<% if action == :edit %>
+  <% model_arr = [workout_set] %> 
+<% else %>
+  <% model_arr = [workout_instance, workout_set] %> 
+<% end %>
+
+<%= turbo_frame_tag combined_dom_id(workout_set.workout_instance, workout_set) do %>
+  <%= form_with model: model_arr do | form | %>
     <%= form.label :reps %>
     <%= form.number_field :reps, min: 0, max: 5000, required: true %>
 
@@ -15,6 +21,6 @@
     <% end %>
 
     <%= form.submit %>
-    <%= link_to "Cancel", workout_session_path(workout_session) %>
+    <%= link_to "Cancel", workout_session_path(workout_instance.workout_session) %>
   <% end %>
 <% end %>
