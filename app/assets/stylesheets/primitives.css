@@ -10,7 +10,8 @@ label {
 }
 
 p,
-a {
+a,
+input {
   font-size: 16px;
 }
 
