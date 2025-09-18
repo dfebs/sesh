@@ -30,7 +30,7 @@ class WorkoutsController < ApplicationController
   def create_from_templates
     template_indices = params[:template_indices].map &:to_i
     create_workouts_with_tags_from_templates template_indices
-    redirect_to root_path
+    redirect_to workouts_path
   end
 
   private
