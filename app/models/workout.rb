@@ -6,7 +6,8 @@ class Workout < ApplicationRecord
   has_many :tags, through: :tag_registrations
 
   def highest_volume
-    workout_instances.max_by(&:volume)&.volume || 0
+    completed_workout_instances = workout_instances.filter { |workout_instance| workout_instance.workout_session.completed? }
+    completed_workout_instances.max_by(&:volume)&.volume || 0
   end
 
   def unit
