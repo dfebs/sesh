@@ -21,6 +21,11 @@ class WorkoutSessionsController < ApplicationController
   end
 
   def create
+    if !Current.user.workouts.any?
+      redirect_to new_from_templates_workouts_path, alert: "You must have at least 1 workout to be able to make workout sessions."
+      return
+    end
+
     @workout_session = WorkoutSession.new
     @workout_session.user = Current.user
 

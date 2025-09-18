@@ -1,2 +1,4 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:var(--color-links)") if flash[:notice] %>
+<div class = "flash">
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <%= tag.div(flash[:notice], style: "color:var(--color-links)") if flash[:notice] %>
+</div>

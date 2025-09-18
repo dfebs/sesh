@@ -17,7 +17,8 @@ body {
   background-color: var(--color-background);
 }
 
-.content {
+.content,
+.flash {
   padding-left: 20vw;
   padding-right: 20vw;
 
