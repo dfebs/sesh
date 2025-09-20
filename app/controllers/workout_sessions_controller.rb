@@ -1,7 +1,7 @@
 class WorkoutSessionsController < ApplicationController
   before_action :initialize_workout_session, only: %i[show update]
   def index
-    @workout_sessions = Current.user.workout_sessions
+    set_workout_sessions
   end
 
   def new
@@ -26,14 +26,15 @@ class WorkoutSessionsController < ApplicationController
       return
     end
 
-    @workout_session = WorkoutSession.new
+    @workout_session = WorkoutSession.new(workout_session_params)
     @workout_session.user = Current.user
 
     if @workout_session.save
       redirect_to @workout_session, notice: "Session successfully created"
     else
       flash.now[:alert] = "Failed to create workout session"
-      render :new, status: :unprocessable_entity
+      set_workout_sessions
+      render :index, status: :unprocessable_entity
     end
   end
 
@@ -43,6 +44,10 @@ class WorkoutSessionsController < ApplicationController
   end
 
   def workout_session_params
-    params.expect workout_session: [ :date_completed ]
+    params.expect workout_session: [ :title, :date_completed ]
+  end
+
+  def set_workout_sessions
+    @workout_sessions = Current.user.workout_sessions
   end
 end
