@@ -29,12 +29,15 @@ class WorkoutSessionsController < ApplicationController
     @workout_session = WorkoutSession.new(workout_session_params)
     @workout_session.user = Current.user
 
-    if @workout_session.save
-      redirect_to @workout_session, notice: "Session successfully created"
-    else
-      flash.now[:alert] = "Failed to create workout session"
-      set_workout_sessions
-      render :index, status: :unprocessable_entity
+    respond_to do |format|
+      if @workout_session.save
+        format.turbo_stream
+        format.html { redirect_to @workout_session, notice: "Session successfully created" }
+      else
+        flash.now[:alert] = "Failed to create workout session"
+        set_workout_sessions
+        format.html { render :index, status: :unprocessable_entity }
+      end
     end
   end
 

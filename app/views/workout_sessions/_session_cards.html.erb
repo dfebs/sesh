@@ -1,4 +1,4 @@
-<div class="session-cards">
+<div class="session-cards" id="<%= group_id %>">
   <% workout_sessions.each do |workout_session| %>
     <%= render "workout_sessions/session_card", workout_session: workout_session %>
   <% end %>
