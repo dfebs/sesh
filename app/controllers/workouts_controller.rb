@@ -34,8 +34,14 @@ class WorkoutsController < ApplicationController
 
   def create_from_templates
     template_indices = params[:template_indices].map &:to_i
-    create_workouts_with_tags_from_templates template_indices
-    redirect_to workouts_path
+    begin
+      ActiveRecord::Base.transaction do
+        create_workouts_with_tags_from_templates template_indices
+        redirect_to workouts_path
+      end
+    rescue ActiveRecord::RecordInvalid
+      render new_from_templates, alert: "Could not create workouts from template"
+    end
   end
 
   private
@@ -48,7 +54,6 @@ class WorkoutsController < ApplicationController
     indices.each do |index|
       template = WorkoutTemplates::WORKOUTS[index]
       workout = Workout.new
-      # TODO add wrap the next 2 lines in a transaction call
 
       build_workout_from_template workout, template
       add_tags_by_name workout, template[:tags]
