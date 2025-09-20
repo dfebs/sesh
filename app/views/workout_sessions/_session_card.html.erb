@@ -1,4 +1,4 @@
-<div class="session-card">
+<div class="session-card" id="<%= dom_id(workout_session, :card) %>">
   
   <%= link_to workout_session.title, workout_session_path(workout_session) %>
 
@@ -9,4 +9,6 @@
       </li>
     <% end %>
   </ul>
+
+  <%= button_to "Delete", workout_session_path(workout_session), method: :delete %>
 </div>

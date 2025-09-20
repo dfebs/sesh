@@ -1,5 +1,5 @@
 class WorkoutSessionsController < ApplicationController
-  before_action :initialize_workout_session, only: %i[show update]
+  before_action :get_workout_session, only: %i[show update destroy]
   def index
     set_workout_sessions
   end
@@ -41,8 +41,17 @@ class WorkoutSessionsController < ApplicationController
     end
   end
 
+  def destroy
+    @workout_session.destroy!
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path, notice: "Deletion successful" }
+    end
+  end
+
   private
-  def initialize_workout_session
+  def get_workout_session
     @workout_session = WorkoutSession.find(params[:id])
   end
 
