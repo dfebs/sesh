@@ -4,6 +4,10 @@ class Workout < ApplicationRecord
   has_many :workout_sets, through: :workout_instances
   has_many :tag_registrations, dependent: :destroy
   has_many :tags, through: :tag_registrations
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :workout_type, presence: true
+  validates :author, presence: true
 
   def highest_volume
     completed_workout_instances = workout_instances.filter { |workout_instance| workout_instance.workout_session.completed? }

@@ -3,6 +3,9 @@ class WorkoutSet < ApplicationRecord
   has_one :workout, through: :workout_instance
   has_one :workout_session, through: :workout_instance
   before_validation :update_all_units
+  validates :reps, presence: true
+  validates :amount_imp, presence: true
+  validates :amount_metric, presence: true
 
   def preferred_unit
     config = workout.author.user_config
