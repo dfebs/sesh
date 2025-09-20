@@ -8,7 +8,28 @@ class WorkoutsController < ApplicationController
   end
 
   def show
+    # This will most likely be where the chart goes
     # @workout = Workout.find(params[:workout_id])
+  end
+
+  def edit
+    @workout = Workout.find(params[:id])
+  end
+
+  def update
+    @workout = Workout.find(params[:id])
+
+    begin
+      ActiveRecord::Base.transaction do
+        @workout.save!
+        merge_tags_by_id(@workout, params[:tag_ids])
+      end
+
+      # TODO: might be worth making this go to the show path (i.e. workout_path(@workout))
+      redirect_to workouts_path, notice: "Workout successfully edited"
+    rescue
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -68,7 +89,27 @@ class WorkoutsController < ApplicationController
       workout.save!
   end
 
-  def add_tags_by_id (workout, tag_ids)
+  def merge_tags_by_id (workout, tag_ids)
+    tag_registrations = workout.tag_registrations.includes(:tag, :workout)
+    do_not_add = []
+
+    workout.tags.all.each do |tag|
+      tag_id_str = tag.id.to_s
+
+      if !tag_ids.include? tag_id_str
+        tag_registrations.find_by(tag_id: tag.id, workout_id: workout.id).destroy!
+      else
+        do_not_add.push(tag_id_str)
+      end
+    end
+
+    tags_to_include = Tag.find(tag_ids).select { |tag| !do_not_add.include? tag.id.to_s }
+    tags_to_include.each do |tag|
+      add_tag_registration workout, tag
+    end
+  end
+
+  def add_tags_by_id(workout, tag_ids)
     tags = Tag.find(tag_ids)
     tags.each do |tag|
       add_tag_registration workout, tag

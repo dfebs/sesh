@@ -8,8 +8,10 @@
   <%= form.label :workout_type, "Workout Type" %>
   <%= form.select :workout_type, Constants::WORKOUT_TYPES %>
 
+  <!-- TODO: This could potentially be optimized better but this will do -->
+  <% workout_tags = workout.tags.all %>
   <% Tag.all.each do |tag| %>
-    <%= checkbox_tag "tag_ids[]", tag.id %>
+    <%= checkbox_tag "tag_ids[]", tag.id, workout_tags.include?(tag) %>
     <%= label_tag tag.title %>
   <% end %>
  

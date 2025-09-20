@@ -2,3 +2,4 @@
 <%= render "tags/tags", tags: workout.tags %>
 <p><%= workout.description %></p>
 <p>Highest Volume: <%= workout.highest_volume %> <%= workout.unit %></p>
+<%= link_to "Edit", edit_workout_path(workout) %>
