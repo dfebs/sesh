@@ -7,6 +7,11 @@
 
   <%= form.label :workout_type, "Workout Type" %>
   <%= form.select :workout_type, Constants::WORKOUT_TYPES %>
+
+  <% Tag.all.each do |tag| %>
+    <%= checkbox_tag "tag_ids[]", tag.id %>
+    <%= label_tag tag.title %>
+  <% end %>
  
   <%= form.submit %>
 <% end %>

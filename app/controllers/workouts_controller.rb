@@ -15,9 +15,14 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.author = Current.user
 
-    if @workout.save
+    begin
+      ActiveRecord::Base.transaction do
+        @workout.save!
+        add_tags_by_id(@workout, params[:tag_ids])
+      end
+
       redirect_to workouts_path, notice: "Workout successfully created"
-    else
+    rescue ActiveRecord::RecordInvalid
       render :new, status: :unprocessable_entity
     end
   end
@@ -46,7 +51,7 @@ class WorkoutsController < ApplicationController
       # TODO add wrap the next 2 lines in a transaction call
 
       build_workout_from_template workout, template
-      add_tags workout, template[:tags]
+      add_tags_by_name workout, template[:tags]
     end
   end
 
@@ -58,7 +63,14 @@ class WorkoutsController < ApplicationController
       workout.save!
   end
 
-  def add_tags(workout, tag_names)
+  def add_tags_by_id (workout, tag_ids)
+    tags = Tag.find(tag_ids)
+    tags.each do |tag|
+      add_tag_registration workout, tag
+    end
+  end
+
+  def add_tags_by_name(workout, tag_names)
     tags = tag_names.map { |title| Tag.find_by(title: title) }
     tags.each do |tag|
       add_tag_registration workout, tag
