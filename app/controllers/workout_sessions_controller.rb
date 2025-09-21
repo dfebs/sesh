@@ -1,5 +1,7 @@
 class WorkoutSessionsController < ApplicationController
   before_action :get_workout_session, only: %i[show update destroy duplicate]
+  before_action :authorize_user, only: %i[show update destroy duplicate]
+
   def index
     set_workout_sessions
   end
@@ -78,5 +80,11 @@ class WorkoutSessionsController < ApplicationController
 
   def set_workout_sessions
     @workout_sessions = Current.user.workout_sessions
+  end
+
+  def authorize_user
+    if @workout_session.user != Current.user
+      redirect_to workout_sessions_path, alert: "You do not have permission to perform this action"
+    end
   end
 end
