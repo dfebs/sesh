@@ -1,5 +1,5 @@
 class WorkoutSessionsController < ApplicationController
-  before_action :get_workout_session, only: %i[show update destroy]
+  before_action :get_workout_session, only: %i[show update destroy duplicate]
   def index
     set_workout_sessions
   end
@@ -47,6 +47,23 @@ class WorkoutSessionsController < ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to root_path, notice: "Deletion successful" }
+    end
+  end
+
+  def duplicate
+    begin
+      ActiveRecord::Base.transaction do
+        @workout_session = @workout_session.deep_duplicate
+      end
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to workout_sessions_path, notice: "Duplication Successful" }
+      end
+    rescue ActiveRecord::RecordInvalid
+      respond_to do |format|
+        set_workout_sessions
+        format.html { render :index, status: :unprocessable_entity }
+      end
     end
   end
 

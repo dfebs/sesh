@@ -21,4 +21,28 @@ class WorkoutSession < ApplicationRecord
 
     true
   end
+
+  def deep_duplicate
+    workout_session_dup = self.dup
+
+    ActiveRecord::Base.transaction do
+      workout_session_dup.date_completed = nil
+      workout_session_dup.save!
+
+      workout_instances.each do |workout_instance|
+        workout_instance_dup = workout_instance.dup
+        workout_instance_dup.workout = workout_instance.workout
+        workout_instance_dup.workout_session = workout_session_dup
+        workout_instance_dup.save!
+
+        workout_instance.workout_sets.each do |workout_set|
+          workout_set_dup = workout_set.dup
+          workout_set_dup.workout_instance = workout_instance_dup
+          workout_set_dup.save!
+        end
+      end
+    end
+
+    workout_session_dup
+  end
 end
