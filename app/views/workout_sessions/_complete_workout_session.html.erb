@@ -5,7 +5,7 @@
     <% if workout_session.ready_for_completion? %>
       <%= render "workout_sessions/form", workout_session: workout_session %>
     <% else %>
-      <p>This workout session is not ready for completion. Be sure to have at least workout instance. All workout instances must have at least one set.</p>
+      <p>This workout session is not ready for completion. Be sure to have at least 1 workout instance. All workout instances must have at least one set.</p>
     <% end %>
   <% end %>
 </div>
