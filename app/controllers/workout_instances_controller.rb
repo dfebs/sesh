@@ -1,5 +1,6 @@
 class WorkoutInstancesController < ApplicationController
-  before_action :get_workout_session, only: [ :new, :create ]
+  before_action :get_workout_session, only: %i[ new create ]
+  before_action :authorize_user, only: %i[create]
 
   def new
     @workout_instance = WorkoutInstance.new
@@ -24,5 +25,11 @@ class WorkoutInstancesController < ApplicationController
 
   def workout_instance_params
     params.expect workout_instance: [ :workout_id ]
+  end
+
+  def authorize_user
+    if Current.user != @workout_session.user
+      redirect_to workout_sessions_path, alert: "You do not have permission to perform this action"
+    end
   end
 end
