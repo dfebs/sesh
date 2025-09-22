@@ -1,6 +1,8 @@
 class WorkoutSetsController < ApplicationController
   before_action :get_workout_instance, only: %i[new create]
   before_action :get_workout_set, only: %i[destroy edit update]
+  before_action :authorize_user_modify, only: %i[destroy create update edit]
+  before_action :authorize_user_create, only: %i[new create]
 
   def new
     @workout_set = @workout_instance.workout_sets.new
@@ -54,5 +56,17 @@ class WorkoutSetsController < ApplicationController
 
   def get_workout_set
     @workout_set = WorkoutSet.find(params[:id])
+  end
+
+  def authorize_user_modify
+    if @workout_set.workout_instance.workout.author != Current.user
+      redirect_to workout_session_path, alert: "You are not authorized to perform this action"
+    end
+  end
+
+  def authorize_user_create
+    if @workout_instance.workout.author != Current.user
+      redirect_to workout_session_path, alert: "You are not authorized to perform this action"
+    end
   end
 end

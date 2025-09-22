@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       post "duplicate"
     end
     resources :workout_instances, shallow: true, only: %i[new create] do
-      resources :workout_sets, shallow: true
+      resources :workout_sets, shallow: true, only: %i[ new destroy create edit update ]
     end
   end
 
