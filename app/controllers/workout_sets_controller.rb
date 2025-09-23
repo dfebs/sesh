@@ -1,7 +1,7 @@
 class WorkoutSetsController < ApplicationController
   before_action :get_workout_instance, only: %i[new create]
   before_action :get_workout_set, only: %i[destroy edit update]
-  before_action :authorize_user_modify, only: %i[destroy create update edit]
+  before_action :authorize_user_modify, only: %i[destroy update edit]
   before_action :authorize_user_create, only: %i[new create]
 
   def new
