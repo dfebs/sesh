@@ -4,9 +4,16 @@ class Workout < ApplicationRecord
   has_many :workout_sets, through: :workout_instances
   has_many :tag_registrations, dependent: :destroy
   has_many :tags, through: :tag_registrations
+
   validates :name, presence: true
+  validates_size_of :name, within: 1..50
+
   validates :description, presence: true
+  validates_size_of :description, within: 1..500
+
   validates :workout_type, presence: true
+  validates_size_of :workout_type, within: 1..50
+
   validates :author, presence: true
 
   def highest_volume
