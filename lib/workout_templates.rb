@@ -266,6 +266,14 @@ module WorkoutTemplates
       tags: [
         "Shoulders"
       ]
+    },
+    {
+      name: "Dumbbell Shoulder Press",
+      description: "--",
+      workout_type: "Weight",
+      tags: [
+        "Shoulders"
+      ]
     }
   ]
 end
