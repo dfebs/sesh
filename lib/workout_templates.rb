@@ -242,5 +242,14 @@ module WorkoutTemplates
         "Triceps"
       ]
     },
+    {
+      name: "Incline Bench Press",
+      description: "--",
+      workout_type: "Weight",
+      tags: [
+        "Chest",
+        "Shoulders",
+      ]
+    },
   ]
 end
