@@ -18,6 +18,12 @@ class WorkoutInstancesController < ApplicationController
     end
   end
 
+  def destroy
+    @workout_instance = WorkoutInstance.find(params[:id])
+    @workout_instance.destroy!
+    redirect_to root_path, notice: "Successfully deleted workout instance"
+  end
+
   private
   def get_workout_session
     @workout_session = WorkoutSession.find(params[:workout_session_id])
