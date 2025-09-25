@@ -258,6 +258,14 @@ module WorkoutTemplates
         "Chest",
         "Shoulders"
       ]
+    },
+    {
+      name: "Landmine Shoulder Press",
+      description: "--",
+      workout_type: "Weight",
+      tags: [
+        "Shoulders"
+      ]
     }
   ]
 end
