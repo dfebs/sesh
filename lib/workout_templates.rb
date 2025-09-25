@@ -234,5 +234,13 @@ module WorkoutTemplates
         "Triceps"
       ]
     },
+    {
+      name: "Push Downs",
+      description: "--",
+      workout_type: "Weight",
+      tags: [
+        "Triceps"
+      ]
+    },
   ]
 end
