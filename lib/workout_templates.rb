@@ -92,7 +92,7 @@ module WorkoutTemplates
       tags: [
         "Upper Back",
         "Core",
-        "Biceps",
+        "Biceps"
       ]
     },
     {
@@ -113,6 +113,14 @@ module WorkoutTemplates
     },
     {
       name: "Incline Dumbbell Curl",
+      description: "--",
+      workout_type: "Weight",
+      tags: [
+        "Biceps"
+      ]
+    },
+    {
+      name: "Barbell Curl",
       description: "--",
       workout_type: "Weight",
       tags: [
@@ -248,8 +256,8 @@ module WorkoutTemplates
       workout_type: "Weight",
       tags: [
         "Chest",
-        "Shoulders",
+        "Shoulders"
       ]
-    },
+    }
   ]
 end
