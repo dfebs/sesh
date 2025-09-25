@@ -1,4 +1,4 @@
-<%= form_with model: workout do |form| %>
+<%= form_with model: workout, class: "workout-form" do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name, required: true, maxlength: 50 %>
 
@@ -11,8 +11,10 @@
   <!-- TODO: This could potentially be optimized better but this will do -->
   <% workout_tags = workout.tags.all %>
   <% Tag.all.each do |tag| %>
-    <%= checkbox_tag "tag_ids[]", tag.id, workout_tags.include?(tag) %>
-    <%= label_tag tag.title %>
+    <div class="workout-checkbox-entry">
+      <%= checkbox_tag "tag_ids[]", tag.id, workout_tags.include?(tag) %>
+      <%= label_tag tag.title %>
+    </div>
   <% end %>
  
   <%= form.submit %>

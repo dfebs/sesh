@@ -21,3 +21,13 @@
     width: 25rem;
   }
 }
+
+.workout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-checkbox-entry {
+  display: flex;
+  flex-direction: row;
+}
