@@ -3,7 +3,7 @@
   <%= form.text_field :name, required: true, maxlength: 50 %>
 
   <%= form.label :description %>
-  <%= form.text_field :description, required: true, maxlength: 500 %>
+  <%= form.text_area :description, required: true, maxlength: 500 %>
 
   <%= form.label :workout_type, "Workout Type" %>
   <%= form.select :workout_type, Constants::WORKOUT_TYPES %>
