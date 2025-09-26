@@ -3,6 +3,7 @@ class WorkoutSession < ApplicationRecord
   has_many :workout_instances, dependent: :destroy
   has_many :workout_sets, through: :workout_instances
   validates :title, presence: true
+  validates_size_of :title, within: 1..50
 
   def completed?
     date_completed.present?
