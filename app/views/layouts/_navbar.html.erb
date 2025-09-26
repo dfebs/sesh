@@ -2,6 +2,7 @@
   <ul>
     <% if authenticated? %>
       <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Workouts", workouts_path %></li>
       <li><%= link_to "Workout Templates", new_from_templates_workouts_path %></li>
       <li class="nav-elem-right"><%= button_to "Log Out", session_path, method: :delete %></li>
     <% end %>
