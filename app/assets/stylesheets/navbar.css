@@ -16,6 +16,11 @@
   padding-left: 15px;
   padding-right: 15px;
   list-style-type: none;
+
+  @media(min-width: 768px) {
+    padding-left: 20vw;
+    padding-right: 20vw;
+  }
 }
 
 .navbar ul .nav-elem-right {

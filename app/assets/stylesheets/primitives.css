@@ -19,6 +19,10 @@ a {
   color: var(--color-links);
 }
 
+form input {
+  max-width: 100%
+}
+
 button,
 input[type="submit"] {
   all: unset;
