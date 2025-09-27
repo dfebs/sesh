@@ -1,15 +1,23 @@
 <div class="session-card" id="<%= dom_id(workout_session, :card) %>">
-  
-  <%= link_to workout_session.title, workout_session_path(workout_session) %>
+  <div class="session-card-top">
+    <%= link_to workout_session.title, workout_session_path(workout_session) %>
+  </div>
 
   <ul class="session-card-workouts">
-    <% workout_session.workout_instances.each do |instance| %>
-      <li class="session-card-workout">
+    <% workout_session.workout_instances.limit(6).each do |instance| %>
+      <li>
         <%= instance.name %>
       </li>
     <% end %>
-  </ul>
 
-  <%= button_to "Delete", workout_session_path(workout_session), method: :delete %>
-  <%= button_to "Duplicate", duplicate_workout_session_path(workout_session), method: :post %>
+    <li>
+      <% if workout_session.workout_instances.length > 6 %>
+        ... and <%= workout_session.workout_instances.length - 6 %> more
+      <% end %>
+    </li>
+  </ul>
+  <div class="session-card-bottom">
+    <%= button_to "Delete", workout_session_path(workout_session), method: :delete %>
+    <%= button_to "Duplicate", duplicate_workout_session_path(workout_session), method: :post %>
+  </div>
 </div>
