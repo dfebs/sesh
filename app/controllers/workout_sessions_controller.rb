@@ -80,6 +80,8 @@ class WorkoutSessionsController < ApplicationController
 
   def set_workout_sessions
     @workout_sessions = Current.user.workout_sessions
+    @upcoming_workout_sessions = @workout_sessions.where(date_completed: nil).order(created_at: :desc, updated_at: :desc)
+    @completed_workout_sessions = @workout_sessions.where.not(date_completed: nil).order(date_completed: :desc, updated_at: :desc)
   end
 
   def authorize_user

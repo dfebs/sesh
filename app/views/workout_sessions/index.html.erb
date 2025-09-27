@@ -2,7 +2,7 @@
 <%= render "workout_sessions/form", workout_session: WorkoutSession.new %>
 
 <h1>Upcoming Sessions</h1>
-<%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @workout_sessions.filter { |session| !session.completed? } %>
+<%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
 
 <h1>Completed Sessions</h1>
-<%= render "workout_sessions/session_cards", group_id: "completed", workout_sessions: @workout_sessions.filter { |session| session.completed? } %>
+<%= render "workout_sessions/session_cards", group_id: "completed", workout_sessions: @completed_workout_sessions %>
