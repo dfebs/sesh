@@ -1,4 +1,3 @@
-<h1>Workout Sets</h1>
 <ul class="workout-sets" id="<%= dom_id(workout_instance, :sets) %>">
   <% workout_instance.workout_sets.each do |workout_set| %>
     <%= render "workout_sets/workout_set", workout_set: workout_set %>
