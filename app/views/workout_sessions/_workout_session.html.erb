@@ -1,6 +1,6 @@
 <h1><%= link_to workout_session.title, workout_session_path(workout_session) %></h1>
 
-<div id="<%= dom_id(workout_session, :workouts) %>">
+<div class="workout-instances" id="<%= dom_id(workout_session, :workouts) %>">
   <%= render "workout_instances/workout_instances", workout_instances: workout_session.workout_instances %>
 </div>
 

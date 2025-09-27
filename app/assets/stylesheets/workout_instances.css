@@ -1,0 +1,15 @@
+@import "colors.css";
+
+.workout-instances {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.workout-instance {
+  border: solid;
+  padding: 1em;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: var(--color-3);
+}

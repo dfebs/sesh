@@ -26,12 +26,6 @@
   height: 10%;
 }
 
-.session-card-middle {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
 .session-card-workouts {
   display: flex;
   flex-direction: column;
