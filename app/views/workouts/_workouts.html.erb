@@ -1,5 +1,5 @@
 <div class="workouts">
-  <% workouts.each do |workout| %>
+  <% workouts.order(name: :asc).each do |workout| %>
     <div class="workout">
       <%= render "workouts/workout", workout: workout %>
     </div>
