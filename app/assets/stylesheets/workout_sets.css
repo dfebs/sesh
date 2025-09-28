@@ -6,6 +6,7 @@
   list-style-type: none;
   color: var(--color-text);
   padding: 0;
+  gap: 1rem;
 }
 
 .workout-sets li turbo-frame,
@@ -15,7 +16,6 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
   background-color: var(--color-2);
   padding: 0.5rem;
   gap: 1rem;
