@@ -5,13 +5,13 @@
 </div>
 
 <% if !workout_session.completed? %>
-  <%= link_to "Add Workout Instance", 
-    new_workout_session_workout_instance_path(workout_session),
-    data: { turbo_frame: combined_dom_id(workout_session, WorkoutInstance.new) } 
-  %>
 <% end %>
 
-<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) %>
+<br>
+
+<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) do %>
+  <%= link_to "Add Workout Instance", new_workout_session_workout_instance_path(workout_session), class: "basic-button" %>
+<% end %>
 
 <%= render "workout_sessions/complete_workout_session", workout_session: workout_session %>
 
