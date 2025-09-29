@@ -18,5 +18,12 @@
 }
 
 .workout-instance h1 {
-  margin-top: 0;
+  margin: 0;
+}
+
+.workout-instance-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
 }

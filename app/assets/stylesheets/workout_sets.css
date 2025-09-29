@@ -10,7 +10,6 @@
 }
 
 .workout-sets li turbo-frame,
-.workout-instance a,
 .workout-instance .workout-set-form {
   display: flex;
   flex-direction: row;
