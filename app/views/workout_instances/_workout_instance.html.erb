@@ -1,4 +1,4 @@
-<div class="workout-instance">
+<div class="workout-instance" id="<%= dom_id(workout_instance) %>">
   <h1><%= workout_instance.workout.name %></h1>
 
   <%= render "workout_sets/workout_sets", workout_instance: workout_instance %>
