@@ -32,4 +32,8 @@ input[type="submit"],
   border-radius: 0.5em;
   padding: 0.5em;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
