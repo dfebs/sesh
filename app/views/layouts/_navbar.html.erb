@@ -1,9 +1,9 @@
 <nav class="navbar">
   <ul>
     <% if authenticated? %>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Workouts", workouts_path %></li>
-      <li><%= link_to "Templates", new_from_templates_workouts_path %></li>
+      <li><%= link_to "Home", root_path, class: "basic-button" %></li>
+      <li><%= link_to "Workouts", workouts_path, class: "basic-button" %></li>
+      <li><%= link_to "Templates", new_from_templates_workouts_path, class: "basic-button" %></li>
       <li class="nav-elem-right"><%= button_to "Log Out", session_path, method: :delete %></li>
     <% end %>
   </ul>
