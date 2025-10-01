@@ -1,5 +1,5 @@
 class WorkoutSessionsController < ApplicationController
-  before_action :get_workout_session, only: %i[show update destroy duplicate]
+  before_action :get_workout_session, only: %i[show update destroy duplicate edit]
   before_action :authorize_user, only: %i[show update destroy duplicate]
 
   def index
@@ -13,12 +13,18 @@ class WorkoutSessionsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   def update
-    if @workout_session.ready_for_completion? && @workout_session.update(workout_session_params)
-      redirect_to workout_sessions_path, notice: "Session updated!"
-    else
-      flash.now[:alert] = "Failed to update workout session"
-      render :show, status: :unprocessable_entity
+    respond_to do |format|
+      if @workout_session.update(workout_session_params)
+        format.turbo_stream
+        format.html { redirect_to workout_sessions_path, notice: "Session updated!" }
+      else
+        flash.now[:alert] = "Failed to update workout session"
+        format.html { render :show, status: :unprocessable_entity }
+      end
     end
   end
 

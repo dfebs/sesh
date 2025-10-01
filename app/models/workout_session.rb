@@ -4,6 +4,7 @@ class WorkoutSession < ApplicationRecord
   has_many :workout_sets, through: :workout_instances
   validates :title, presence: true
   validates_size_of :title, within: 1..50
+  validate :check_completion_validity
 
   def completed?
     date_completed.present?
@@ -21,6 +22,12 @@ class WorkoutSession < ApplicationRecord
     end
 
     true
+  end
+
+  def check_completion_validity
+    if date_completed != nil && !ready_for_completion?
+      errors.add :date_completed, "This workout session is not ready for completion."
+    end
   end
 
   def deep_duplicate

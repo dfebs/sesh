@@ -1,6 +1,16 @@
-<%= form_with model: workout_session do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title, required: true, maxlength: 50 %>
+<%= turbo_frame_tag dom_id(workout_session, :title) do %>
+  <%= form_with model: workout_session do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true, maxlength: 50 %>
 
-  <%= form.submit %>
+    <%= form.submit %>
+    <% if action == :new %>
+      <%= link_to "Cancel", workout_sessions_path, class: "basic-button" %>
+    <% end %>
+
+    <% if action == :edit %>
+      <%= link_to "Cancel", workout_session_path(workout_session), class: "basic-button" %>
+    <% end %>
+  <% end %>
 <% end %>
+

@@ -1,6 +1,8 @@
 <p><%= Current.user.email_address %><p>
-<%= render "workout_sessions/form", workout_session: WorkoutSession.new %>
 
+<%= turbo_frame_tag dom_id(WorkoutSession.new, :title) do %>
+  <%= link_to "New Workout Session", new_workout_session_path, class: "basic-button" %>
+<% end %>
 <h1>Upcoming Sessions</h1>
 <%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
 

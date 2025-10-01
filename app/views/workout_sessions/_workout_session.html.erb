@@ -1,11 +1,8 @@
-<h1><%= link_to workout_session.title, workout_session_path(workout_session) %></h1>
+<%= render "workout_sessions/title", workout_session: workout_session %>
 
 <div class="workout-instances" id="<%= dom_id(workout_session, :workouts) %>">
   <%= render "workout_instances/workout_instances", workout_instances: workout_session.workout_instances %>
 </div>
-
-<% if !workout_session.completed? %>
-<% end %>
 
 <br>
 
