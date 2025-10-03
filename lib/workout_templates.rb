@@ -140,6 +140,14 @@ module WorkoutTemplates
       ]
     },
     {
+      name: "Dumbbell Curl",
+      description: "--",
+      workout_type: "Weight",
+      tags: [
+        "Biceps"
+      ]
+    },
+    {
       name: "Barbell Curl",
       description: "--",
       workout_type: "Weight",
