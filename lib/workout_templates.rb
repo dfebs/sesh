@@ -100,7 +100,8 @@ module WorkoutTemplates
       description: "--",
       workout_type: "Long Distance",
       tags: [
-        "Legs"
+        "Legs",
+        "Cardio"
       ]
     },
     {
@@ -108,7 +109,26 @@ module WorkoutTemplates
       description: "--",
       workout_type: "Long Distance",
       tags: [
-        "Legs"
+        "Legs",
+        "Cardio"
+      ]
+    },
+    {
+      name: "Indoor Walk",
+      description: "--",
+      workout_type: "Long Distance",
+      tags: [
+        "Legs",
+        "Cardio"
+      ]
+    },
+    {
+      name: "Outdoor Walk",
+      description: "--",
+      workout_type: "Long Distance",
+      tags: [
+        "Legs",
+        "Cardio"
       ]
     },
     {
