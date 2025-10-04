@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [ :create, :new ]
+  resources :user_configs, only: [ :edit, :update ]
   root "workout_sessions#index"
 
   resources :workouts do

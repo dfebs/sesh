@@ -2,9 +2,10 @@ class WorkoutSet < ApplicationRecord
   belongs_to :workout_instance
   has_one :workout, through: :workout_instance
   has_one :workout_session, through: :workout_instance
-  before_validation :update_all_units
-  validates :reps, presence: true, inclusion: { in: 1..5000 }, numericality: { only_integer: true }
 
+  before_validation :update_all_units, if: -> { amount_imp_changed? || amount_metric_changed? }
+
+  validates :reps, presence: true, inclusion: { in: 1..5000 }, numericality: { only_integer: true }
   validates :amount_imp, presence: true, numericality: { greater_than: 0.01, less_than_or_equal_to: 15000 }
   validates :amount_metric, presence: true, numericality: { greater_than: 0.01, less_than_or_equal_to: 15000 }
 
@@ -30,5 +31,12 @@ class WorkoutSet < ApplicationRecord
     when "metric"
       self.amount_imp = self.amount_metric * Constants::UNIT_CONVERSION_FACTORS[preferred_unit]
     end
+
+    truncate_units
+  end
+
+  def truncate_units
+    self.amount_imp = self.amount_imp.truncate 2
+    self.amount_metric = self.amount_metric.truncate 2
   end
 end

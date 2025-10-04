@@ -1,0 +1,12 @@
+<%= form_with model: user_config do |form| %>
+  <%= form.label :short_distance_unit %>
+  <%= form.select :short_distance_unit, Constants::SHORT_DISTANCE_UNITS %>
+
+  <%= form.label :long_distance_unit %>
+  <%= form.select :long_distance_unit, Constants::LONG_DISTANCE_UNITS %>
+
+  <%= form.label :weight_unit %>
+  <%= form.select :weight_unit, Constants::WEIGHT_UNITS %>
+
+  <%= form.submit %>
+<% end %>
