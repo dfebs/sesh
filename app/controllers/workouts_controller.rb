@@ -1,4 +1,7 @@
 class WorkoutsController < ApplicationController
+  before_action :get_workout, only: %i[ show edit update ]
+  before_action :authorize_user, only: %i[ show edit update ]
+
   def index
     @workouts = Current.user.workouts
   end
@@ -8,17 +11,12 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    # This will most likely be where the chart goes
-    # @workout = Workout.find(params[:workout_id])
   end
 
   def edit
-    @workout = Workout.find(params[:id])
   end
 
   def update
-    @workout = Workout.find(params[:id])
-
     begin
       ActiveRecord::Base.transaction do
         @workout.save!
@@ -126,5 +124,15 @@ class WorkoutsController < ApplicationController
   def add_tag_registration(workout, tag)
     tag_registration = TagRegistration.new(workout: workout, tag: tag)
     tag_registration.save!
+  end
+
+  def authorize_user
+    if @workout.author != Current.user
+      redirect_to workout_sessions_path, alert: "You do not have permission to perform this action"
+    end
+  end
+
+  def get_workout
+    @workout = Workout.find(params[:id])
   end
 end
