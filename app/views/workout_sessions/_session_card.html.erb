@@ -19,5 +19,8 @@
   <div class="session-card-bottom">
     <%= button_to "Delete", workout_session_path(workout_session), method: :delete %>
     <%= button_to "Duplicate", duplicate_workout_session_path(workout_session), method: :post %>
+    <% if workout_session.completed? %>
+      &#10003;<em><%= workout_session.date_completed.strftime("%a, %b %-d %Y") %></em>
+    <% end %>
   </div>
 </div>

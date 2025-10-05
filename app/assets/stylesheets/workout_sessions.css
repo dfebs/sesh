@@ -38,9 +38,11 @@
 .session-card-bottom {
   height: 20%;
   display: flex;
+  align-items: center;
   flex-direction: row;
   margin-top: auto;
   gap: 1em;
+  color: var(--color-text)
 }
 
 .session-card a {
