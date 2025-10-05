@@ -1,4 +1,4 @@
-<h1><%= workout.name %></h1>
+<%= link_to workout.name, workout_path(workout)%>
 <%= render "tags/tags", tags: workout.tags %>
 <p><%= workout.description %></p>
 <p>Highest Volume: <%= workout.highest_volume %> <%= workout.unit %></p>
