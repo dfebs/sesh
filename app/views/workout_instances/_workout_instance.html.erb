@@ -1,7 +1,9 @@
 <div class="workout-instance" id="<%= dom_id(workout_instance) %>">
   <div class="workout-instance-title">
     <h2><%= workout_instance.workout.name %></h2>
-    <%= button_to "Delete Workout", workout_instance_path(workout_instance), method: :delete %>
+    <% if !workout_instance.workout_session.completed? %>
+      <%= button_to "Delete Workout", workout_instance_path(workout_instance), method: :delete %>
+    <% end %>
   </div>
 
   <%= render "workout_sets/workout_sets", workout_instance: workout_instance %>
