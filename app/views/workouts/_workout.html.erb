@@ -1,0 +1,8 @@
+<h1><%= workout.name %></h1>
+<div
+  data-controller="barchart"
+  data-barchart-labels-value="<%= labels.to_json %>"
+  data-barchart-numbers-value="<%= data.to_json %>"
+  data-barchart-unit-value="<%= workout.unit %>">
+  <canvas id="bar-chart" data-barchart-target="myChart" width="800" height="450"></canvas>
+</div>

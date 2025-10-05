@@ -11,6 +11,13 @@ class WorkoutsController < ApplicationController
   end
 
   def show
+    @workout_instances = @workout.workout_instances.select { |instance| instance.workout_session.completed? }
+    @workout_instances = @workout_instances.sort_by do | instance |
+      instance.workout_session.date_completed
+    end
+
+    @labels = @workout_instances.map { | instance | instance.workout_session.date_completed }
+    @data = @workout_instances.map { | instance | instance.volume }
   end
 
   def edit
