@@ -14,6 +14,4 @@
 
 <%= render "workout_sessions/complete_workout_session", workout_session: workout_session %>
 
-<h2><%= workout_session.user.email_address %></h2>
-
 <%= button_to "Delete", workout_session_path(workout_session), method: :delete, data: { turbo: false } %>

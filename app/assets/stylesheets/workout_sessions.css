@@ -83,3 +83,17 @@
   align-items: flex-start;
   gap: 1em;
 }
+
+.complete-workout-session {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-2);
+  border-radius: 10px;
+  padding: 1em;
+  gap: 1em;
+  box-shadow: 0 0 12px var(--color-2);
+}
+
+.complete-workout-session h2 {
+  margin: 0
+}
