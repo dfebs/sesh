@@ -1,7 +1,7 @@
 <div class="workouts">
   <% workouts.order(name: :asc).each do |workout| %>
     <div class="workout">
-      <%= render "workouts/workout", workout: workout %>
+      <%= render "workouts/workout_card", workout: workout %>
     </div>
   <% end %>
 </div>
