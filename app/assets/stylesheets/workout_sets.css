@@ -16,7 +16,8 @@
   align-items: center;
   flex-wrap: wrap;
   background-color: var(--color-2);
-  padding: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
   gap: 1rem;
 }
 

@@ -58,8 +58,23 @@
   background-color: var(--color-4);
 }
 
-.session-title {
-  margin-bottom: 1em;
+.session-title turbo-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.session-title h1 {
+  margin: 0;
+}
+
+.session-title turbo-frame form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .session-title form {
