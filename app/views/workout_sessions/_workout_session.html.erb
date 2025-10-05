@@ -6,8 +6,10 @@
 
 <br>
 
-<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) do %>
-  <%= link_to "Add Workout Instance", new_workout_session_workout_instance_path(workout_session), class: "basic-button" %>
+<% if !workout_session.completed? %>
+  <%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) do %>
+    <%= link_to "Add Workout Instance", new_workout_session_workout_instance_path(workout_session), class: "basic-button" %>
+  <% end %>
 <% end %>
 
 <%= render "workout_sessions/complete_workout_session", workout_session: workout_session %>
