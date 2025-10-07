@@ -33,6 +33,7 @@ class WorkoutsController < ApplicationController
       # TODO: might be worth making this go to the show path (i.e. workout_path(@workout))
       redirect_to workouts_path, notice: "Workout successfully edited"
     rescue
+      flash.now[:alert] = @workout.errors.full_messages.join("")
       render :edit, status: :unprocessable_entity
     end
   end
@@ -49,6 +50,7 @@ class WorkoutsController < ApplicationController
 
       redirect_to workouts_path, notice: "Workout successfully created"
     rescue ActiveRecord::RecordInvalid
+      flash.now[:alert] = @workout.errors.full_messages.join("")
       render :new, status: :unprocessable_entity
     end
   end

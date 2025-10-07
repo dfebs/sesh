@@ -16,6 +16,8 @@ class Workout < ApplicationRecord
 
   validates :author, presence: true
 
+  before_validation :check_uniqueness
+
   def highest_volume
     completed_workout_instances = workout_instances.filter { |workout_instance| workout_instance.workout_session.completed? }
     completed_workout_instances.max_by(&:volume)&.volume || 0
@@ -23,5 +25,15 @@ class Workout < ApplicationRecord
 
   def unit
     author.user_config.get_unit workout_type
+  end
+
+  def check_uniqueness
+    downcase = name.downcase
+    user_workouts = Workout.where(author: author).where.not(id: self.id)
+    user_workouts.each do |workout|
+      if workout.name.downcase == downcase
+        errors.add :name, "is already used in another workout"
+      end
+    end
   end
 end
