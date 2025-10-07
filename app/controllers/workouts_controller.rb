@@ -26,6 +26,7 @@ class WorkoutsController < ApplicationController
   def update
     begin
       ActiveRecord::Base.transaction do
+        @workout.update(workout_params)
         @workout.save!
         merge_tags_by_id(@workout, params[:tag_ids])
       end
