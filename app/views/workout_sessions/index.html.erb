@@ -3,8 +3,14 @@
 <%= turbo_frame_tag dom_id(WorkoutSession.new, :title) do %>
   <%= link_to "New Workout Session", new_workout_session_path, class: "basic-button" %>
 <% end %>
+
 <h1>Upcoming Sessions</h1>
 <%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
 
 <h1>Completed Sessions</h1>
-<%= render "workout_sessions/session_cards", group_id: "completed", workout_sessions: @completed_workout_sessions %>
+<h2>This week</h2>
+<%= render "workout_sessions/session_cards", group_id: "completed", workout_sessions: @completed_sessions_this_week %>
+<h2>Last week</h2>
+<%= render "workout_sessions/session_cards", group_id: "completed-last-week", workout_sessions: @completed_sessions_last_week %>
+<h2>2 weeks ago +</h2>
+<%= render "workout_sessions/session_cards", group_id: "completed-long-ago", workout_sessions: @completed_sessions_long_ago %>
