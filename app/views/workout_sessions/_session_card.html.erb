@@ -20,7 +20,11 @@
     <%= button_to "Delete", workout_session_path(workout_session), method: :delete %>
     <%= button_to "Duplicate", duplicate_workout_session_path(workout_session), method: :post %>
     <% if workout_session.completed? %>
-      &#10003;<em><%= workout_session.date_completed.strftime("%a, %b %-d %Y") %></em>
+      <% if workout_session.date_completed == Date.today %>
+        <em style="color: var(--color-notice)">&#10003; Completed Today!</em>
+      <% else %>
+        <em>&#10003; <%= workout_session.date_completed.strftime("%a, %b %-d %Y") %></em>
+      <% end %>
     <% end %>
   </div>
 </div>
