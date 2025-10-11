@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :email_address, presence: true, length: { maximum: 255 }
   after_create_commit -> { create_user_config }
 
+  generates_token_for :email_confirmation
+
   private
   def create_user_config
     config = UserConfig.new(

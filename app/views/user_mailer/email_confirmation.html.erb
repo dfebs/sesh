@@ -1,0 +1,4 @@
+<h1>Hey Gamer</h1>
+Here is your link to confirm your email. Sick gains await!
+
+<%= link_to "Confirm Email", confirm_email_user_url(@user, token: @user.generate_token_for(:email_confirmation)) %>

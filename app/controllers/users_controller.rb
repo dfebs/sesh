@@ -13,6 +13,25 @@ class UsersController < ApplicationController
   def new
   end
 
+  def edit
+    @user = Current.user
+  end
+
+  def confirm_email
+    @user = User.find_by_token_for(:email_confirmation, params[:token])
+    @user.email_confirmed = true
+    @user.save!
+  end
+
+  def send_confirmation_email
+    @user = User.find(params[:id])
+    UserMailer.with(user: @user).email_confirmation.deliver_later
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path, notice: "Confirmation email sent. It will reach your inbox shortly." }
+    end
+  end
+
   private
 
   def user_params

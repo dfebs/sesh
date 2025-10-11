@@ -1,0 +1,9 @@
+<div id="confirm-email">
+  <% if user.email_confirmed? %>
+    <h1>Email is confirmed</h1>
+  <% else %>
+    <%= form_with url: send_confirmation_email_user_path(user) do |form| %>
+      <%= form.submit "Send Confirmation Email" %>
+    <% end %>
+  <% end %>
+</div>

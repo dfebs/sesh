@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :users, only: [ :create, :new ]
+  resources :users, only: [ :create, :new, :edit ] do
+    member do
+      get "confirm_email"
+      post "send_confirmation_email"
+    end
+  end
   resources :user_configs, only: [ :edit, :update ]
   root "workout_sessions#index"
 
