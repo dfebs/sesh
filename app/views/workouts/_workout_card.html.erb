@@ -1,4 +1,14 @@
-<%= link_to workout.name, workout_path(workout)%>
-<%= render "tags/tags", tags: workout.tags %>
-<p><%= workout.description %></p>
-<%= link_to "Edit", edit_workout_path(workout) %>
+<div class="workout-card-top">
+  <%= link_to workout.name, workout_path(workout)%>
+</div>
+
+<div class="workout-card-content">
+  <span><%= workout.description %></span>
+  <%= render "tags/tags", tags: workout.tags %>
+</div>
+
+<div class="workout-card-bottom">
+  <%= link_to edit_workout_path(workout), class: "basic-card-button" do %>
+    <%= render "icons/edit" %>
+  <% end %>
+</div>
