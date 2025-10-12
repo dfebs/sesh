@@ -44,13 +44,3 @@
 .workout-sets li #workout_set_reps {
   width: 4rem;
 }
-
-/* this is styled same as button primitive */
-.workout-sets a {
-  all: unset;
-  background-color: var(--color-3);
-  color: var(--color-text);
-  border-radius: 0.5em;
-  padding: 0.5em;
-  cursor: pointer;
-}

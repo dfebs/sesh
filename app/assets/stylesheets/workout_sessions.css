@@ -39,7 +39,7 @@
   height: 20%;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: row-reverse;
   margin-top: auto;
   gap: 1em;
   color: var(--color-text)
@@ -54,8 +54,8 @@
   color: var(--color-text);
 }
 
-.session-card button {
-  background-color: var(--color-4);
+.session-card-bottom em {
+  margin-right: auto;
 }
 
 .session-title turbo-frame {
