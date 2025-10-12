@@ -27,6 +27,11 @@ button,
 input[type="submit"],
 .basic-button {
   all: unset;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
   background-color: var(--color-3);
   color: var(--color-text);
   border-radius: 0.5em;
@@ -36,4 +41,9 @@ input[type="submit"],
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+.basic-button svg {
+  width: 85%;
+  height: auto;
 }

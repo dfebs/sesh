@@ -1,12 +1,24 @@
 <nav class="navbar">
   <ul>
     <% if authenticated? %>
-      <li><%= link_to "Home", root_path, class: "basic-button" %></li>
+      <li>
+        <%= link_to root_path, class: "basic-button" do %>
+          <%= render "icons/home" %>
+        <% end %>
+      </li>
       <li><%= link_to "Workouts", workouts_path, class: "basic-button" %></li>
       <!-- <li><%= link_to "Templates", new_from_templates_workouts_path, class: "basic-button" %></li> -->
       <li class="nav-elem-right"><%= button_to "Log Out", session_path, method: :delete %></li>
-      <li> <%= link_to "Acct Settings", edit_user_path(Current.user), class: "basic-button" %></li>
-      <li> <%= link_to "Settings", edit_user_config_path(Current.user.user_config), class: "basic-button" %></li>
+      <li>
+        <%= link_to edit_user_path(Current.user), class: "basic-button" do %>
+          <%= render "icons/user" %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_user_config_path(Current.user.user_config), class: "basic-button" do %>
+          <%= render "icons/settings" %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </nav>
