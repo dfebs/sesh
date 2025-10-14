@@ -1,5 +1,9 @@
-<%= turbo_frame_tag dom_id(WorkoutSession.new, :title) do %>
-  <%= link_to "New Workout Session", new_workout_session_path, class: "basic-button" %>
+<% if Current.user.workouts.any? %>
+  <%= turbo_frame_tag dom_id(WorkoutSession.new, :title) do %>
+    <%= link_to "New Workout Session", new_workout_session_path, class: "basic-button" %>
+  <% end %>
+<% else %>
+  <p>You currently have no workouts. See the <%= link_to "Templates", new_from_templates_workouts_path %> <%= render "icons/template" %> page to get started.</p>
 <% end %>
 
 <h1>Upcoming Sessions</h1>
