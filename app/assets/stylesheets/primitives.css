@@ -6,7 +6,8 @@ h5,
 h6,
 p,
 label,
-span {
+span,
+em {
   color: var(--color-text);
 }
 
