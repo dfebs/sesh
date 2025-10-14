@@ -66,7 +66,7 @@ class WorkoutsController < ApplicationController
     begin
       ActiveRecord::Base.transaction do
         create_workouts_with_tags_from_templates template_indices
-        redirect_to workouts_path
+        redirect_to workouts_path, notice: "Successfully created workouts from templates"
       end
     rescue ActiveRecord::RecordInvalid
       render new_from_templates, alert: "Could not create workouts from template"
