@@ -48,6 +48,17 @@ input[type="submit"],
   -ms-user-select: none;
 }
 
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+textarea,
+select {
+  background-color: var(--color-2);
+  border-color: var(--color-5);
+  color: var(--color-text);
+  accent-color: var(--color-4);
+}
+
 .red-button {
   background-color: var(--color-warning);
 }
