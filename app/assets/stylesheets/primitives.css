@@ -46,9 +46,9 @@ input[type="submit"],
   padding: 0.5em;
   cursor: pointer;
   user-select: none;
+  max-height: 20px;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
 }
 
 input[type="text"],
