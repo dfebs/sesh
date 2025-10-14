@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_one :user_config, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
-  validates :email_address, presence: true, length: { maximum: 255 }
+  validates :email_address, presence: true, length: { maximum: 255 }, uniqueness: true
   after_create_commit -> { create_user_config }
 
   generates_token_for :email_confirmation, expires_in: 1.day
