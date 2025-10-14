@@ -80,7 +80,7 @@ select {
 }
 
 /* The logout button was being weird on desktop */
-.button_to svg {
+nav .button_to svg {
   @media (min-width: 768px) {
     width: 25%
   }
