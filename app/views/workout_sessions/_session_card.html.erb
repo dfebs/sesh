@@ -17,11 +17,11 @@
     </li>
   </ul>
   <div class="session-card-bottom">
-    <%= button_to workout_session_path(workout_session), method: :delete, class: "red-button" do %>
-      <%= render "icons/delete" %>
-    <% end %>
     <%= button_to duplicate_workout_session_path(workout_session), method: :post, class: "basic-card-button" do %>
       <%= render "icons/duplicate" %>
+    <% end %>
+    <%= button_to workout_session_path(workout_session), method: :delete, class: "red-button" do %>
+      <%= render "icons/delete" %>
     <% end %>
     <% if workout_session.completed? %>
       <% if workout_session.date_completed == Date.today %>
