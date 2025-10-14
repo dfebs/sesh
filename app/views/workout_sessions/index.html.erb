@@ -1,10 +1,12 @@
-<p><%= Current.user.email_address %><p>
-
 <%= turbo_frame_tag dom_id(WorkoutSession.new, :title) do %>
   <%= link_to "New Workout Session", new_workout_session_path, class: "basic-button" %>
 <% end %>
 
 <h1>Upcoming Sessions</h1>
+
+<% if !@upcoming_workout_sessions.any? %>
+  <em id="no-sessions-notice">You have no workout sessions coming up! Duplicate <%= render "icons/duplicate" %> an existing workout session or create a new one by selecting "New workout session" above.</em>
+<% end %>
 <%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
 
 <h1>Completed Sessions</h1>

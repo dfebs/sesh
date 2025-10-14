@@ -1,3 +1,5 @@
 <%= turbo_stream.prepend "upcoming" do %>
   <%= render "workout_sessions/session_card", workout_session: @workout_session %>
 <% end %>
+
+<%= turbo_stream.remove "no-sessions-notice" %>
