@@ -13,7 +13,12 @@
           <span>Workouts</span>
         <% end %>
       </li>
-      <!-- <li><%= link_to "Templates", new_from_templates_workouts_path, class: "basic-button" %></li> -->
+      <li>
+        <%= link_to new_from_templates_workouts_path, class: "basic-button" do %>
+          <%= render "icons/template" %>
+          <span>Templates</span>
+        <% end %>
+      </li>
       <li class="nav-elem-right">
         <%= link_to edit_user_path(Current.user), class: "basic-button" do %>
           <%= render "icons/user" %>
