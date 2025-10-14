@@ -1,4 +1,4 @@
-<%= link_to "Register", new_user_path %>
+<h1>Sign in</h1>
 <%= form_with url: session_path do |form| %>
   <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], maxlength: 254 %><br>
   <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>

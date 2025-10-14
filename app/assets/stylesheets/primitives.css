@@ -30,11 +30,13 @@ button,
 input[type="submit"],
 .basic-button,
 .red-button,
-.basic-card-button {
+.basic-card-button,
+.button-to {
   all: unset;
   display: flex;
   gap: 0.25rem;
   flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   width: fit-content;
@@ -50,7 +52,9 @@ input[type="submit"],
 }
 
 input[type="text"],
+input[type="email"],
 input[type="number"],
+input[type="password"],
 input[type="checkbox"],
 textarea,
 select {
@@ -73,6 +77,13 @@ select {
 .red-button svg {
   width: 85%;
   height: auto;
+}
+
+/* The logout button was being weird on desktop */
+.button_to svg {
+  @media (min-width: 768px) {
+    width: 25%
+  }
 }
 
 .basic-button span,
