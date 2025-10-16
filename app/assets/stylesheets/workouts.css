@@ -3,7 +3,7 @@
 .workouts {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1rem;
   flex-wrap: wrap;
   margin: 15px;
 }
