@@ -1,6 +1,9 @@
 <header id="<%= dom_id(workout_session, :title_display) %>" class="session-title">
   <%= turbo_frame_tag dom_id(workout_session, :title) do %>
     <h1><%= workout_session.title %></h1>
-    <%= link_to "Edit Title", edit_workout_session_path(workout_session), class: "basic-button" %>
+    <%= link_to edit_workout_session_path(workout_session), class: "basic-button" do %>
+      <%= render "icons/edit" %>
+      <span>Edit</span>
+    <% end %>
   <% end %>
 </header>
