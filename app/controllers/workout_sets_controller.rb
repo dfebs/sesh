@@ -1,6 +1,6 @@
 class WorkoutSetsController < ApplicationController
   before_action :get_workout_instance, only: %i[new create]
-  before_action :get_workout_set, only: %i[destroy edit update]
+  before_action :get_workout_set, only: %i[destroy edit update duplicate]
   before_action :authorize_user_modify, only: %i[destroy update edit]
   before_action :authorize_user_create, only: %i[new create]
 
@@ -38,6 +38,21 @@ class WorkoutSetsController < ApplicationController
     respond_to do | format |
       if @workout_set.update(workout_set_params)
         format.turbo_stream
+        # TODO: Check this works by temporarily turning off turbo
+        format.html { redirect_to @workout_set.workout_session, notice: "Successfully updated reps" }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def duplicate
+    @workout_instance = @workout_set.workout_instance
+    @workout_set_dup = @workout_set.dup
+    respond_to do |format|
+      if @workout_set_dup.save
+        format.turbo_stream
+        # TODO: Check this works by temporarily turning off turbo
         format.html { redirect_to @workout_set.workout_session, notice: "Successfully updated reps" }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -35,7 +35,10 @@
   }
 }
 
-.workout-sets li .button_to {
+.workout-sets li .workout-set-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
   margin-left: auto;
 }
 
