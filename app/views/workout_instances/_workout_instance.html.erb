@@ -2,7 +2,10 @@
   <div class="workout-instance-title">
     <%= link_to workout_instance.workout.name, workout_path(workout_instance.workout) %>
     <% if !workout_instance.workout_session.completed? %>
-      <%= button_to "Delete Workout", workout_instance_path(workout_instance), method: :delete %>
+      <%= button_to workout_instance_path(workout_instance), method: :delete, class: "red-button" do %>
+        <%= render "icons/delete" %>
+        <span>Delete</span>
+      <% end %>
     <% end %>
   </div>
 
