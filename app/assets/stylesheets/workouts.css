@@ -5,7 +5,12 @@
   flex-direction: row;
   gap: 1rem;
   flex-wrap: wrap;
-  margin: 15px;
+  margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
 }
 
 .workout {
@@ -19,7 +24,7 @@
   height: 15rem;
 
   @media (min-width: 768px) {
-    width: 25rem;
+    width: auto;
   }
 }
 
