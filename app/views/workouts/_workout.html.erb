@@ -8,7 +8,7 @@
 </div>
 
 <table>
-  <caption>Past <%= workout.name %> Workouts</caption>
+  <caption><%= workout.name %> History</caption>
   <thead>
     <tr>
       <th scope="col">Session</th>
@@ -20,7 +20,7 @@
     <% @workout_instances_desc.each do |workout_instance| %>
       <tr>
         <th scope="row"><%= link_to workout_instance.workout_session.title, workout_session_path(workout_instance.workout_session) %></th>
-        <td><%= workout_instance.volume %></td>
+        <td><%= workout_instance.volume %> <%= workout.unit %></td>
         <td><%= workout_instance.workout_session.date_completed.strftime("%a, %b %-d %Y") %></td>
       </tr>
     <% end %>
