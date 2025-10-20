@@ -16,6 +16,8 @@ class WorkoutsController < ApplicationController
       instance.workout_session.date_completed
     end
 
+    @workout_instances_desc = @workout_instances.reverse
+
     @labels = @workout_instances.map { | instance | instance.workout_session.date_completed }
     @data = @workout_instances.map { | instance | instance.volume }
   end

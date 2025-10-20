@@ -6,3 +6,23 @@
   data-barchart-unit-value="<%= workout.unit %>">
   <canvas id="bar-chart" data-barchart-target="myChart" width="800" height="450"></canvas>
 </div>
+
+<table>
+  <caption>Past <%= workout.name %> Workouts</caption>
+  <thead>
+    <tr>
+      <th scope="col">Session</th>
+      <th scope="col">Volume</th>
+      <th scope="col">Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workout_instances_desc.each do |workout_instance| %>
+      <tr>
+        <th scope="row"><%= link_to workout_instance.workout_session.title, workout_session_path(workout_instance.workout_session) %></th>
+        <td><%= workout_instance.volume %></td>
+        <td><%= workout_instance.workout_session.date_completed.strftime("%a, %b %-d %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
