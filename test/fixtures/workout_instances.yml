@@ -2,8 +2,8 @@
 
 one:
   workout_session: one
-  workout_template: one
+  workout: one
 
 two:
   workout_session: two
-  workout_template: two
+  workout: two

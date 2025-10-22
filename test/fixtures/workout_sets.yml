@@ -1,9 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  reps: 1
+  reps: 8
   workout_instance: one
+  amount_imp: 30.0
+  amount_metric: 13.605
 
 two:
-  reps: 1
+  reps: 10
   workout_instance: two
+  amount_imp: 210.0
+  amount_metric: 95.235
+

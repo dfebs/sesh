@@ -1,9 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
+  name: Outdoor Run
+  description: Some good ol fashioned cardio
+  author: one
+  workout_type: "Long Distance"
 
 two:
-  name: MyString
-  description: MyString
+  name: Pull-Ups
+  description: Some good ol fashioned weight lifting
+  author: two
+  workout_type: "Weight"
+
+two:
+  name: Row Machine
+  description: Some good ol fashioned short distancing
+  author: three
+  workout_type: "Short Distance"

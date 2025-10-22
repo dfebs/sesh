@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  short_distance_unit: MyString
-  long_distance_unit: MyString
-  weight_unit: MyString
+  short_distance_unit: ft
+  long_distance_unit: mi
+  weight_unit: kg
   user: one
 
 two:
-  short_distance_unit: MyString
-  long_distance_unit: MyString
-  weight_unit: MyString
+  short_distance_unit: m
+  long_distance_unit: km
+  weight_unit: kg
   user: two
