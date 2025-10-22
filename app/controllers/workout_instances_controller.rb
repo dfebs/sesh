@@ -8,12 +8,22 @@ class WorkoutInstancesController < ApplicationController
 
   def create
     @workout_instance = @workout_session.workout_instances.new(workout_instance_params)
-    respond_to do |format|
-      if @workout_instance.save
-        format.turbo_stream
-        format.html { redirect_to @workout_session, notice: "Workout instance created" }
-      else
-        format.html { render :new, status: :unprocessable_entity }
+
+    begin
+      ActiveRecord::Base.transaction do
+        @workout_instance.save!
+        best_workout_instance = WorkoutInstance.highest_volume(Current.user, @workout_instance)
+        workout_sets = WorkoutInstance.dup_workout_sets(best_workout_instance, @workout_instance)
+        workout_sets.each(&:save!)
+
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to @workout_session, notice: "Workout instance created" }
+        end
+      rescue ActiveRecord::RecordInvalid
+        respond_to do |format|
+          format.html { render :new, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -41,5 +51,8 @@ class WorkoutInstancesController < ApplicationController
     if Current.user != @workout_session.user
       redirect_to workout_sessions_path, alert: "You do not have permission to perform this action"
     end
+  end
+
+  def save_workout_session_with_sets
   end
 end
