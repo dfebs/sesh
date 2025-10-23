@@ -1,4 +1,5 @@
 class WorkoutSetsController < ApplicationController
+  rate_limit to: 100, within: 1.minute
   before_action :get_workout_instance, only: %i[new create]
   before_action :get_workout_set, only: %i[destroy edit update duplicate]
   before_action :authorize_user_modify, only: %i[destroy update edit]

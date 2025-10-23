@@ -1,4 +1,5 @@
 class WorkoutInstancesController < ApplicationController
+  rate_limit to: 100, within: 1.minute
   before_action :get_workout_session, only: %i[ new create ]
   before_action :authorize_user, only: %i[create]
 

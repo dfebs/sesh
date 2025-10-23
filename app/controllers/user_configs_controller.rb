@@ -1,4 +1,6 @@
 class UserConfigsController < ApplicationController
+  rate_limit to: 100, within: 1.minute
+
   def edit
     @user_config = UserConfig.find(params[:id])
   end

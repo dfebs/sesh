@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  rate_limit to: 100, within: 1.minute
+  # TODO: make this apparent to the person trying to send an email again within 1 minute of the first time
+  rate_limit to: 1, within: 1.minute, only: :send_confirmation_email
   allow_unauthenticated_access only: [ :new, :create ]
 
   def create
