@@ -22,8 +22,15 @@ a {
   color: var(--color-links);
 }
 
-form input {
-  max-width: 100%
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+textarea,
+select {
+  max-width: 50%
 }
 
 button,
@@ -50,6 +57,10 @@ input[type="submit"],
   max-height: 20px;
   -webkit-user-select: none;
   -moz-user-select: none;
+}
+
+form .basic-button {
+  margin-top: 1rem;
 }
 
 input[type="text"],

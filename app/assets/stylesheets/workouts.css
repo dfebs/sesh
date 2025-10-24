@@ -32,11 +32,6 @@
   font-size: 1.5rem;
 }
 
-.workout-form {
-  display: flex;
-  flex-direction: column;
-}
-
 .workout-checkbox-entry {
   display: flex;
   flex-direction: row;

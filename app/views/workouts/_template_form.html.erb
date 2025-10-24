@@ -1,9 +1,11 @@
 <h2>Select Templates</h2>
 <%= form_with url: create_from_templates_workouts_path do |form| %>
   <% templates.each do |template| %>
-    <%= checkbox_tag "template_indices[]", template[1] %>
-    <%= label_tag template[0][:name] %>
+    <div class="workout-checkbox-entry">
+      <%= checkbox_tag "template_indices[]", template[1] %>
+      <%= label_tag template[0][:name] %>
+    </div>
   <% end %>
 
-  <%= form.submit "Add Templates" %>
+  <%= form.submit "Add Templates", class: "basic-button" %>
 <% end %>

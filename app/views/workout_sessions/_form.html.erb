@@ -3,7 +3,7 @@
     <%= form.label :title %>
     <%= form.text_field :title, required: true, maxlength: 50 %>
 
-    <%= form.submit %>
+    <%= form.submit class: "basic-button" %>
     <% if action == :new %>
       <%= link_to "Cancel", workout_sessions_path, class: "basic-button" %>
     <% end %>

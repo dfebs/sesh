@@ -9,7 +9,10 @@
 <h1>Upcoming Sessions</h1>
 
 <% if !@upcoming_workout_sessions.any? %>
-  <em id="no-sessions-notice">You have no workout sessions coming up! Duplicate <%= render "icons/duplicate" %> an existing workout session or create a new one by selecting "New workout session" above.</em>
+  <div id="no-sessions-notice">
+    <p><em id="no-sessions-notice">You have no workout sessions coming up!</em></p>
+    <p><em>Duplicate <%= render "icons/duplicate" %> an existing workout session or create a new one by selecting "New workout session" above.</em></p>
+  </div>
 <% end %>
 <%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
 

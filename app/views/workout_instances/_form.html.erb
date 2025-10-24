@@ -3,7 +3,7 @@
     <%= form.label :workout_id, "Workout" %>
     <%= form.collection_select :workout_id, Current.user.workouts.order(name: :asc), :id, :name %>
 
-    <%= form.submit %>
+    <%= form.submit class: "basic-button" %>
     <%= link_to "Cancel", workout_session_path(workout_session), class: "basic-button" %>
   <% end %>
 <% end %>
