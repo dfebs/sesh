@@ -2,6 +2,7 @@ class WorkoutInstance < ApplicationRecord
   belongs_to :workout_session
   belongs_to :workout
 
+  after_validation :set_order_index
   has_many :workout_sets, dependent: :destroy
 
   def volume
@@ -14,6 +15,11 @@ class WorkoutInstance < ApplicationRecord
 
   def user
     workout_session.user
+  end
+
+  def set_order_index
+    last_index = workout_session.workout_instances.order_by(:order_index).last.order_index
+    self.order_index = (last_index + 100.0) / 2.0
   end
 
   def self.dup_workout_sets(origin, receiver)
