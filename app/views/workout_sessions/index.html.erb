@@ -15,7 +15,7 @@
   </div>
 <% end %>
 <%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
-
+<hr>
 <h1>Completed Sessions</h1>
 <h2>This week</h2>
 <%= render "workout_sessions/session_cards", group_id: "completed", workout_sessions: @completed_sessions_this_week %>
