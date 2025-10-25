@@ -2,3 +2,9 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "chart.js"
+
+document.addEventListener('turbo:load', function() {
+    if (window.location.hash) {
+        window.location.hash = window.location.hash;
+    }
+});

@@ -19,7 +19,7 @@
   <tbody>
     <% @workout_instances_desc.each do |workout_instance| %>
       <tr>
-        <th scope="row"><%= link_to workout_instance.workout_session.title, workout_session_path(workout_instance.workout_session) %></th>
+        <th scope="row"><%= link_to workout_instance.workout_session.title, workout_session_path(workout_instance.workout_session, anchor: dom_id(workout_instance)) %></th>
         <td><%= workout_instance.volume %> <%= workout.unit %></td>
         <td><%= workout_instance.workout_session.date_completed.strftime("%a, %b %-d %Y") %></td>
       </tr>
