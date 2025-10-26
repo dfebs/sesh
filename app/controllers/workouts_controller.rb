@@ -21,6 +21,7 @@ class WorkoutsController < ApplicationController
 
     @labels = @workout_instances.map { | instance | instance.workout_session.date_completed }
     @data = @workout_instances.map { | instance | instance.volume }
+    @highest_attempts = @workout_instances.map { | instance | instance.highest_attempt }
   end
 
   def edit

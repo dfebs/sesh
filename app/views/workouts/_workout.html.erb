@@ -1,10 +1,21 @@
 <h1><%= workout.name %></h1>
+
+<!-- TODO: make the divs reusable partials -->
 <div
   data-controller="linechart"
   data-linechart-labels-value="<%= labels.to_json %>"
   data-linechart-numbers-value="<%= data.to_json %>"
-  data-linechart-unit-value="<%= workout.unit %>">
+  data-linechart-unit-value="<%= workout.unit %>"
+  data-linechart-highest-attempts-value="<%= highest_attempts.to_json %>">
   <canvas id="line-chart" data-linechart-target="myChart" width="800" height="450"></canvas>
+</div>
+
+<div
+  data-controller="highest-attempts-linechart"
+  data-highest-attempts-linechart-labels-value="<%= labels.to_json %>"
+  data-highest-attempts-linechart-unit-value="<%= workout.unit %>"
+  data-highest-attempts-linechart-highest-attempts-value="<%= highest_attempts.to_json %>">
+  <canvas id="highest-attempts-line-chart" data-highest-attempts-linechart-target="highestAttemptsChart" width="800" height="450"></canvas>
 </div>
 
 <table>
