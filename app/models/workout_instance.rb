@@ -8,6 +8,10 @@ class WorkoutInstance < ApplicationRecord
     workout_sets.sum { |set| set.amount * set.reps }
   end
 
+  def highest_attempt
+    workout_sets.max_by(&:amount).amount
+  end
+
   def name
     workout.name
   end
