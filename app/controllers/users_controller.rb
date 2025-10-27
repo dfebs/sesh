@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   rate_limit to: 100, within: 1.minute
   # TODO: make this apparent to the person trying to send an email again within 1 minute of the first time
-  rate_limit to: 1, within: 1.minute, only: :send_confirmation_email
+  rate_limit to: 10, within: 1.minute, only: :send_confirmation_email
   allow_unauthenticated_access only: [ :new, :create ]
 
   def create
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = Current.user
+    @confirmation_sent_recently = confirmation_sent_recently?
   end
 
   def confirm_email
@@ -29,10 +30,17 @@ class UsersController < ApplicationController
 
   def send_confirmation_email
     @user = User.find(params[:id])
-    UserMailer.with(user: @user).email_confirmation.deliver_later
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to root_path, notice: "Confirmation email sent. It will reach your inbox shortly." }
+
+    if confirmation_sent_recently?
+      flash.now[:alert] = "Please wait ~30 seconds before refreshing and trying to send a confirmation email again."
+      render :edit
+    else
+      session[:last_confirmation_email_sent] = Time.current
+      UserMailer.with(user: @user).email_confirmation.deliver_later
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to root_path, notice: "Confirmation email sent. It will reach your inbox shortly." }
+      end
     end
   end
 
@@ -40,5 +48,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.expect user: [ :email_address, :password, :password_confirmation ]
+  end
+
+  def confirmation_sent_recently?
+    last_sent = session[:last_confirmation_email_sent]&.to_time
+    last_sent && last_sent > 30.seconds.ago
   end
 end
