@@ -4,7 +4,7 @@ class WorkoutsController < ApplicationController
   before_action :authorize_user, only: %i[ show edit update ]
 
   def index
-    @workouts = Current.user.workouts
+    @workouts = Current.user.workouts.order("lower(name)")
   end
 
   def new
