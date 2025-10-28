@@ -1,1 +1,4 @@
 <%= turbo_stream.remove dom_id(@workout_instance) %>
+<%= turbo_stream.replace dom_id(@workout_instance.workout_session, :complete) do %>
+  <%= render "workout_sessions/complete_workout_session", workout_session: @workout_instance.workout_session %>
+<% end %>
