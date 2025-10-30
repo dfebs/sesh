@@ -1,7 +1,9 @@
 <% if action == :edit %>
-  <% model_arr = [workout_set] %> 
+  <% model_arr = [workout_set] %>
+  <% button_action = "Update" %>
 <% else %>
   <% model_arr = [workout_instance, workout_set] %> 
+  <% button_action = "Add" %>
 <% end %>
 
 <%= turbo_frame_tag combined_dom_id(workout_set.workout_instance, workout_set) do %>
@@ -29,7 +31,7 @@
     <div class="form-interaction">
         <%= form.button class: "green-button" do %>
           <%= render "icons/check" %>
-          <span>Update</span>
+          <span><%= button_action %></span>
         <% end %>
         <%= link_to workout_session_path(workout_instance.workout_session), class: "cancel-button" do %>
           <%= render "icons/x" %>

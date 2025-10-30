@@ -37,12 +37,6 @@ form {
   flex-direction: column;
 }
 
-form input,
-textarea,
-select {
-  max-width: 50%
-}
-
 button,
 .basic-button,
 .text-only-button,
