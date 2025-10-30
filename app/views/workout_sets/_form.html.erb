@@ -6,21 +6,35 @@
 
 <%= turbo_frame_tag combined_dom_id(workout_set.workout_instance, workout_set) do %>
   <%= form_with model: model_arr, class: "workout-set-form" do | form | %>
-    <%= form.label :reps %>
-    <%= form.number_field :reps, min: 1, max: 5000, required: true, inputmode: "numeric" %>
-
     <% preferred_unit = Current.user.user_config.get_unit workout_instance.workout[:workout_type] %>
 
-    <%= form.label "Amount #{preferred_unit}" %>
-    <% if Constants::UNIT_TYPES[preferred_unit] == "imperial" %>
-      <%= form.number_field :amount_imp, min: 0.01, max: 3000, required: true, step: :any, inputmode: "decimal" %>
-    <% end %>
+    <div class="form-inputs">
+      <div class="form-reps">
+        <%= form.label :reps %>
+        <%= form.number_field :reps, min: 1, max: 5000, required: true, inputmode: "numeric" %>
+      </div>
 
-    <% if Constants::UNIT_TYPES[preferred_unit] == "metric" %>
-      <%= form.number_field :amount_metric, min: 1, max: 3000, required: true, step: :any, inputmode: "decimal" %>
-    <% end %>
+      <div class="form-amount">
+        <%= form.label "#{preferred_unit}" %>
+        <% if Constants::UNIT_TYPES[preferred_unit] == "imperial" %>
+          <%= form.number_field :amount_imp, min: 0.01, max: 3000, required: true, step: :any, inputmode: "decimal" %>
+        <% end %>
 
-    <%= form.submit class: "submit" %>
-    <%= link_to "Cancel", workout_session_path(workout_instance.workout_session), class: "basic-button" %>
+        <% if Constants::UNIT_TYPES[preferred_unit] == "metric" %>
+          <%= form.number_field :amount_metric, min: 1, max: 3000, required: true, step: :any, inputmode: "decimal" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-interaction">
+        <%= form.button class: "green-button" do %>
+          <%= render "icons/check" %>
+          <span>Update</span>
+        <% end %>
+        <%= link_to workout_session_path(workout_instance.workout_session), class: "cancel-button" do %>
+          <%= render "icons/x" %>
+          <span>Cancel</span>
+        <% end %>
+    </div>
   <% end %>
 <% end %>

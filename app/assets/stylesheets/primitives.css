@@ -44,10 +44,11 @@ select {
 }
 
 button,
-input[type="submit"],
 .basic-button,
 .text-only-button,
 .red-button,
+.cancel-button,
+.green-button,
 .basic-card-button,
 .button-to {
   all: unset;
@@ -90,6 +91,14 @@ select {
   background-color: var(--color-4);
 }
 
+.cancel-button {
+  background-color: var(--color-cancel);
+}
+
+.green-button {
+  background-color: var(--color-green-button);
+}
+
 .basic-button svg,
 .basic-card-button svg,
 .red-button svg {
@@ -107,6 +116,8 @@ nav .button_to svg {
 .basic-button span,
 .basic-card-button span,
 .red-button span,
+.cancel-button span,
+.green-button span,
 .navbar ul li button span {
   @media(max-width: 768px) {
     display: none;

@@ -9,8 +9,7 @@
   gap: 1rem;
 }
 
-.workout-sets li turbo-frame,
-.workout-instance .workout-set-form {
+.workout-sets li turbo-frame {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,19 +20,49 @@
   gap: 1rem;
 }
 
-.workout-sets li turbo-frame .workout-set-form {
+.workout-set-form {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
+  background-color: var(--color-2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  gap: 1rem;
   width: 100%;
-  flex-wrap: wrap;
 }
 
-.workout-sets li .submit {
+.workout-set-form .form-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1rem;
+
   @media (min-width: 768px) {
-    margin-left: auto;
+    flex-direction: row;
   }
+
 }
+
+.workout-set-form .form-reps,
+.workout-set-form .form-amount {
+  display: flex;
+  gap: 1rem;
+}
+
+.workout-set-form .form-interaction {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+/* .workout-sets li turbo-frame .workout-set-form { */
+/*   display: flex; */
+/*   align-items: center; */
+/*   gap: 0.5rem; */
+/*   width: 100%; */
+/*   flex-wrap: wrap; */
+/* } */
 
 .workout-sets li .workout-set-controls {
   display: flex;
