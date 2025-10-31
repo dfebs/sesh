@@ -1,18 +1,21 @@
 <div class="session-card" id="<%= dom_id(workout_session, :card) %>">
   <div class="session-card-top">
-    <%= link_to workout_session.title, workout_session_path(workout_session) %>
+    <%= link_to workout_session_path(workout_session) do %> 
+      <h1><%= workout_session.title %></h1>
+      <%= render "icons/arrow_right" %>
+    <% end %>
   </div>
 
   <ul class="session-card-workouts">
-    <% workout_session.workout_instances.limit(6).each do |instance| %>
+    <% workout_session.workout_instances.limit(5).each do |instance| %>
       <li>
         <%= instance.name %>
       </li>
     <% end %>
 
     <li>
-      <% if workout_session.workout_instances.length > 6 %>
-        ... and <%= workout_session.workout_instances.length - 6 %> more
+      <% if workout_session.workout_instances.length > 5 %>
+        ... and <%= workout_session.workout_instances.length - 5 %> more
       <% end %>
     </li>
   </ul>

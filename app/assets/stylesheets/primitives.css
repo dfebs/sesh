@@ -82,7 +82,7 @@ select {
 }
 
 .basic-card-button {
-  background-color: var(--color-4);
+  background-color: var(--color-3);
 }
 
 .cancel-button {
@@ -95,6 +95,8 @@ select {
 
 .basic-button svg,
 .basic-card-button svg,
+.green-button svg,
+.cancel-button svg,
 .red-button svg {
   width: 85%;
   height: auto;
