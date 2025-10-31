@@ -31,6 +31,10 @@
   }
 }
 
+.workout:hover {
+  box-shadow: 0 0 12px var(--color-3);
+}
+
 .workout a {
   font-size: 1.5rem;
 }

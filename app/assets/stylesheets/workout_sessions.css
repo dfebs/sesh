@@ -30,6 +30,10 @@
   }
 }
 
+.session-card:hover {
+  box-shadow: 0 0 12px var(--color-3);
+}
+
 .session-card-top {
   border-bottom: solid;
   border-color: var(--color-3);
@@ -48,6 +52,11 @@
 .session-card-top h1 {
   margin: 0;
   font-size: 1.25rem;
+}
+
+.session-card-top:hover a h1,
+.session-card-top:hover a svg {
+  color: var(--color-5);
 }
 
 .session-card-top svg {
@@ -72,11 +81,6 @@
   gap: 1em;
   color: var(--color-text)
 }
-
-/* .session-card a { */
-/*   font-size: 1.5rem; */
-/*   margin-top: 0.5rem; */
-/* } */
 
 .session-card-workouts li {
   color: var(--color-text);
