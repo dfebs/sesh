@@ -3,6 +3,7 @@ class WorkoutInstance < ApplicationRecord
   belongs_to :workout
 
   has_many :workout_sets, dependent: :destroy
+  validate :check_max_instances, on: :create
 
   def volume
     workout_sets.sum { |set| set.amount * set.reps }
@@ -18,6 +19,13 @@ class WorkoutInstance < ApplicationRecord
 
   def user
     workout_session.user
+  end
+  
+  def check_max_instances
+    max = 20
+    if workout_session.workout_instances.length > max
+      errors.add :base, "Max number of workout sessions reached. Max is #{max}."
+    end
   end
 
   def self.dup_workout_sets(origin, receiver)

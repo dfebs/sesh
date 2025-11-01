@@ -1,6 +1,6 @@
 <div id="flash">
   <% flash.each do |type, message| %>
-    <%= tag.div(message, style: "color:red", role: "alert") if type == "alert" %>
+    <%= tag.div(message, style: "color:red", role: "alert", data: { controller: "flash" }) if type == "alert" %>
     <%= tag.div(message, style: "color:var(--color-notice)", role: "alert") if type == "notice" %>
   <% end %>
 </div>

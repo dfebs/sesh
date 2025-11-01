@@ -21,8 +21,10 @@ class WorkoutInstancesController < ApplicationController
           format.turbo_stream
           format.html { redirect_to @workout_session, notice: "Workout instance created" }
         end
-      rescue ActiveRecord::RecordInvalid
+      rescue ActiveRecord::RecordInvalid => e
+        flash.now[:alert] = e.record.errors.full_messages.join(", ")
         respond_to do |format|
+          format.turbo_stream { render_flash_stream(:unprocessable_entity) }
           format.html { render :new, status: :unprocessable_entity }
         end
       end
