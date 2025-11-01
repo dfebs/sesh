@@ -1,4 +1,6 @@
-<div class = "flash">
-  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-  <%= tag.div(flash[:notice], style: "color:var(--color-notice)") if flash[:notice] %>
+<div id="flash">
+  <% flash.each do |type, message| %>
+    <%= tag.div(message, style: "color:red", role: "alert") if type == "alert" %>
+    <%= tag.div(message, style: "color:var(--color-notice)", role: "alert") if type == "notice" %>
+  <% end %>
 </div>
