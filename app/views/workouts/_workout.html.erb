@@ -1,26 +1,39 @@
 <h1><%= workout.name %></h1>
+
+<!-- TODO: make the divs reusable partials -->
 <div
-  data-controller="barchart"
-  data-barchart-labels-value="<%= labels.to_json %>"
-  data-barchart-numbers-value="<%= data.to_json %>"
-  data-barchart-unit-value="<%= workout.unit %>">
-  <canvas id="bar-chart" data-barchart-target="myChart" width="800" height="450"></canvas>
+  data-controller="linechart"
+  data-linechart-labels-value="<%= labels.to_json %>"
+  data-linechart-numbers-value="<%= data.to_json %>"
+  data-linechart-unit-value="<%= workout.unit %>"
+  data-linechart-highest-attempts-value="<%= highest_attempts.to_json %>">
+  <canvas id="line-chart" data-linechart-target="myChart" width="800" height="450"></canvas>
+</div>
+
+<div
+  data-controller="highest-attempts-linechart"
+  data-highest-attempts-linechart-labels-value="<%= labels.to_json %>"
+  data-highest-attempts-linechart-unit-value="<%= workout.unit %>"
+  data-highest-attempts-linechart-highest-attempts-value="<%= highest_attempts.to_json %>">
+  <canvas id="highest-attempts-line-chart" data-highest-attempts-linechart-target="highestAttemptsChart" width="800" height="450"></canvas>
 </div>
 
 <table>
-  <caption><%= workout.name %> History</caption>
+  <caption>History</caption>
   <thead>
     <tr>
       <th scope="col">Session</th>
-      <th scope="col">Volume</th>
+      <th scope="col">Volume (<%= workout.unit %>)</th>
+      <th scope="col">Highest Attempt (<%= workout.unit %>)</th>
       <th scope="col">Completed</th>
     </tr>
   </thead>
   <tbody>
     <% @workout_instances_desc.each do |workout_instance| %>
       <tr>
-        <th scope="row"><%= link_to workout_instance.workout_session.title, workout_session_path(workout_instance.workout_session) %></th>
-        <td><%= workout_instance.volume %> <%= workout.unit %></td>
+        <th scope="row"><%= link_to workout_instance.workout_session.title, workout_session_path(workout_instance.workout_session, anchor: dom_id(workout_instance)) %></th>
+        <td><%= workout_instance.volume %></td>
+        <td><%= workout_instance.highest_attempt %></td>
         <td><%= workout_instance.workout_session.date_completed.strftime("%a, %b %-d %Y") %></td>
       </tr>
     <% end %>

@@ -2,4 +2,8 @@
   <%= render "workout_sessions/session_card", workout_session: @workout_session %>
 <% end %>
 
+<%= turbo_stream.replace dom_id(WorkoutSession.new, :title) do %>
+  <%= render "workout_sessions/new_workout_session_button" %>
+<% end %>
+
 <%= turbo_stream.remove "no-sessions-notice" %>

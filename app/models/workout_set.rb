@@ -6,8 +6,8 @@ class WorkoutSet < ApplicationRecord
   before_validation :update_all_units, if: -> { amount_imp_changed? || amount_metric_changed? }
 
   validates :reps, presence: true, inclusion: { in: 1..5000 }, numericality: { only_integer: true }
-  validates :amount_imp, presence: true, numericality: { greater_than: 0.01, less_than_or_equal_to: 15000 }
-  validates :amount_metric, presence: true, numericality: { greater_than: 0.01, less_than_or_equal_to: 15000 }
+  validates :amount_imp, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 15000 }
+  validates :amount_metric, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 15000 }
 
   def preferred_unit
     config = workout.author.user_config

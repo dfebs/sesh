@@ -9,8 +9,8 @@
   gap: 1rem;
 }
 
-.workout-sets li turbo-frame,
-.workout-instance .workout-set-form {
+.workout-instance-controls turbo-frame,
+.workout-sets li turbo-frame {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,21 +19,54 @@
   border-radius: 0.5rem;
   padding: 1rem;
   gap: 1rem;
-}
-
-.workout-sets li turbo-frame .workout-set-form {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   width: 100%;
-  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
-.workout-sets li .submit {
-  @media (min-width: 768px) {
-    margin-left: auto;
-  }
+.workout-instance-controls .basic-button {
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.workout-set-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--color-2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.workout-set-form .form-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+}
+
+.workout-set-form .form-reps,
+.workout-set-form .form-amount {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+}
+
+.workout-set-form .form-interaction {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-left: auto;
+}
+
 
 .workout-sets li .workout-set-controls {
   display: flex;
@@ -42,8 +75,8 @@
   margin-left: auto;
 }
 
-.workout-sets li #workout_set_amount_imp,
-.workout-sets li #workout_set_amount_metric,
-.workout-sets li #workout_set_reps {
-  width: 4rem;
+.workout-instance #workout_set_amount_imp,
+.workout-instance #workout_set_amount_metric,
+.workout-instance #workout_set_reps {
+  width: 6rem;
 }

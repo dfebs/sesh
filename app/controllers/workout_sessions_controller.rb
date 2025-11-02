@@ -4,7 +4,7 @@ class WorkoutSessionsController < ApplicationController
   before_action :authorize_user, only: %i[show update destroy duplicate]
 
   def index
-    set_workout_sessions
+    get_workout_sessions
   end
 
   def new
@@ -43,9 +43,12 @@ class WorkoutSessionsController < ApplicationController
         format.turbo_stream
         format.html { redirect_to @workout_session, notice: "Session successfully created" }
       else
-        flash.now[:alert] = "Failed to create workout session"
-        set_workout_sessions
-        format.html { render :index, status: :unprocessable_entity }
+        flash.now[:alert] = @workout_session.errors.full_messages.join(", ")
+        format.turbo_stream { render_flash_stream(:unprocessable_entity) }
+        format.html do
+          get_workout_sessions
+          render :index, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -66,12 +69,19 @@ class WorkoutSessionsController < ApplicationController
       end
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to workout_sessions_path, notice: "Duplication Successful" }
+        format.html do
+          get_workout_sessions
+          render :index, notice: "Duplication Successful"
+        end
       end
-    rescue ActiveRecord::RecordInvalid
+    rescue ActiveRecord::RecordInvalid => e
+      flash.now[:alert] = e.record.errors.full_messages.join(", ")
       respond_to do |format|
-        set_workout_sessions
-        format.html { render :index, status: :unprocessable_entity }
+        format.turbo_stream { render_flash_stream(:unprocessable_entity) }
+        format.html do
+          get_workout_sessions
+          render :index, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -85,7 +95,7 @@ class WorkoutSessionsController < ApplicationController
     params.expect workout_session: [ :title, :date_completed ]
   end
 
-  def set_workout_sessions
+  def get_workout_sessions
     today = Date.current
     @workout_sessions = Current.user.workout_sessions
     @upcoming_workout_sessions = @workout_sessions.where(date_completed: nil).order(created_at: :desc, updated_at: :desc)

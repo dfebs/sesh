@@ -4,7 +4,7 @@ class WorkoutsController < ApplicationController
   before_action :authorize_user, only: %i[ show edit update ]
 
   def index
-    @workouts = Current.user.workouts
+    @workouts = Current.user.workouts.order("lower(name)")
   end
 
   def new
@@ -21,6 +21,7 @@ class WorkoutsController < ApplicationController
 
     @labels = @workout_instances.map { | instance | instance.workout_session.date_completed }
     @data = @workout_instances.map { | instance | instance.volume }
+    @highest_attempts = @workout_instances.map { | instance | instance.highest_attempt }
   end
 
   def edit

@@ -19,7 +19,7 @@ body {
 }
 
 .content,
-.flash {
+#flash {
   padding-top: 0.5rem;
   padding-left: 20vw;
   padding-right: 20vw;

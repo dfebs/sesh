@@ -42,7 +42,8 @@ class WorkoutSetsController < ApplicationController
         # TODO: Check this works by temporarily turning off turbo
         format.html { redirect_to @workout_set.workout_session, notice: "Successfully updated reps" }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream
+        format.html { redirect_to new_workout_instance_workout_set_path(@workout_set.workout_instance) }
       end
     end
   end

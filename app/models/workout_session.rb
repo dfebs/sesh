@@ -5,6 +5,7 @@ class WorkoutSession < ApplicationRecord
   validates :title, presence: true
   validates_size_of :title, within: 1..50
   validate :check_completion_validity
+  validate :check_max_sessions, on: :create
 
   def completed?
     date_completed.present?
@@ -27,6 +28,13 @@ class WorkoutSession < ApplicationRecord
   def check_completion_validity
     if date_completed != nil && !ready_for_completion?
       errors.add :date_completed, "This workout session is not ready for completion."
+    end
+  end
+
+  def check_max_sessions
+    max = 10
+    if user.workout_sessions.where(date_completed: nil).length > 10
+      errors.add :base, "Max number of upcoming workout sessions reached. Max is #{max}"
     end
   end
 

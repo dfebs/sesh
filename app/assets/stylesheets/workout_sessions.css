@@ -15,10 +15,13 @@
 .session-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-3);
+  background-color: var(--color-2);
   border-radius: 10px;
   padding: 1em;
   box-shadow: 0 0 12px var(--color-2);
+  border: solid;
+  border-color: var(--color-3);
+  border-width: 2px;
   height: 15rem;
   width: 100%;
 
@@ -27,8 +30,37 @@
   }
 }
 
+.session-card:hover {
+  box-shadow: 0 0 12px var(--color-3);
+}
+
 .session-card-top {
-  height: 10%;
+  border-bottom: solid;
+  border-color: var(--color-3);
+  border-width: 1px;
+  padding-bottom: 0.5rem;
+  height: 15%;
+}
+
+.session-card-top a {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
+}
+
+.session-card-top h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.session-card-top:hover a h1,
+.session-card-top:hover a svg {
+  color: var(--color-5);
+}
+
+.session-card-top svg {
+  margin-left: auto;
 }
 
 .session-card-workouts {
@@ -48,11 +80,6 @@
   margin-top: auto;
   gap: 1em;
   color: var(--color-text)
-}
-
-.session-card a {
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
 }
 
 .session-card-workouts li {
