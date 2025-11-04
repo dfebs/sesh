@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :user_configs, only: [ :edit, :update ]
+
   root "workout_sessions#index"
 
   resources :workouts do
@@ -23,6 +24,9 @@ Rails.application.routes.draw do
       post "duplicate"
     end
     resources :workout_instances, shallow: true, only: %i[new create destroy] do
+      member do
+        post "shift"
+      end
       resources :workout_sets, shallow: true, only: %i[ new destroy create edit update ] do
         member do
           post "duplicate"
