@@ -7,7 +7,7 @@
   </div>
 
   <ul class="session-card-workouts">
-    <% workout_session.workout_instances.limit(5).each do |instance| %>
+    <% workout_session.workout_instances.order(order_index: :asc).limit(5).each do |instance| %>
       <li>
         <%= instance.name %>
       </li>

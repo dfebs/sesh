@@ -41,6 +41,29 @@ class WorkoutInstancesController < ApplicationController
     end
   end
 
+  def shift
+    @workout_instance = WorkoutInstance.find(params[:id])
+    shift_direction = params[:shift_direction]
+
+    case shift_direction
+    when "top"
+      @workout_instance.send_to_order_top
+    when "bottom"
+      @workout_instance.send_to_order_bottom
+    when "up"
+      @workout_instance.shift_order_up
+    when "down"
+      @workout_instance.shift_order_down
+    end
+
+    if @workout_instance.save
+      # TODO: make this better
+      redirect_to root_path, notice: "Successfully shifted the thing"
+    else
+      redirect_to root_path, alert: "We did not in fact shift the thing"
+    end
+  end
+
   private
   def get_workout_session
     @workout_session = WorkoutSession.find(params[:workout_session_id])

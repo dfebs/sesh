@@ -2,7 +2,7 @@ class WorkoutInstance < ApplicationRecord
   belongs_to :workout_session
   belongs_to :workout
 
-  after_validation :set_order_index
+  after_validation :send_to_order_bottom, on: :create
   has_many :workout_sets, dependent: :destroy
   validate :check_max_instances, on: :create
 
@@ -21,7 +21,7 @@ class WorkoutInstance < ApplicationRecord
   def user
     workout_session.user
   end
-  
+
   def check_max_instances
     max = 20
     if workout_session.workout_instances.length > max
@@ -29,9 +29,51 @@ class WorkoutInstance < ApplicationRecord
     end
   end
 
-  def set_order_index
-    last_index = workout_session.workout_instances.order_by(:order_index).last.order_index
-    self.order_index = (last_index + 100.0) / 2.0
+  def shift_order_up
+    workout_instances = workout_session.workout_instances.order(:order_index)
+    index = workout_instances.index self
+    if index == 1
+      send_to_order_top
+      return
+    end
+
+    if index != 0
+      self.order_index = (workout_instances[index - 1].order_index + workout_instances[index - 2].order_index) / 2
+    end
+  end
+
+  def shift_order_down
+    workout_instances = workout_session.workout_instances.order(:order_index)
+    index = workout_instances.index self
+    if index == workout_instances.length - 2
+      send_to_order_bottom
+      return
+    end
+
+    if !(index == workout_instances.length - 1)
+      next_item_order_index = workout_instances[index + 1].order_index
+      following_item_order_index = workout_instances[index + 2].order_index
+      self.order_index = (next_item_order_index + following_item_order_index) / 2.0
+    end
+  end
+
+  def send_to_order_top
+    workout_instances = workout_session.workout_instances.order(:order_index)
+    index = workout_instances.index self
+    if index != 0
+      first_index = workout_session.workout_instances.order(:order_index).first.order_index
+      self.order_index = (first_index / 2)
+    end
+  end
+
+  def send_to_order_bottom
+    workout_instances = workout_session.workout_instances.order(:order_index)
+    index = workout_instances.index self # TODO: this may or may not work
+
+    if index != workout_instances.length - 1
+      last_index = workout_session.workout_instances.order(:order_index).last.order_index
+      self.order_index = (last_index + 1.0).floor
+    end
   end
 
   def self.dup_workout_sets(origin, receiver)
