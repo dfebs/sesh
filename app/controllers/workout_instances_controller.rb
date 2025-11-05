@@ -43,6 +43,7 @@ class WorkoutInstancesController < ApplicationController
 
   def shift
     @workout_instance = WorkoutInstance.find(params[:id])
+    @workout_session = @workout_instance.workout_session
     shift_direction = params[:shift_direction]
 
     case shift_direction
@@ -57,10 +58,11 @@ class WorkoutInstancesController < ApplicationController
     end
 
     if @workout_instance.save
-      # TODO: make this better
-      redirect_to root_path, notice: "Successfully shifted the thing"
+      respond_to do |format|
+        format.turbo_stream
+      end
     else
-      redirect_to root_path, alert: "We did not in fact shift the thing"
+      redirect_to root_path, alert: @workout_instance.errors.full_messages.join(", ")
     end
   end
 

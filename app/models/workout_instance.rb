@@ -32,48 +32,65 @@ class WorkoutInstance < ApplicationRecord
   def shift_order_up
     workout_instances = workout_session.workout_instances.order(:order_index)
     index = workout_instances.index self
-    if index == 1
-      send_to_order_top
-      return
+    if index == 0
+      return nil
     end
 
-    if index != 0
-      self.order_index = (workout_instances[index - 1].order_index + workout_instances[index - 2].order_index) / 2
+    if index == 1
+      return send_to_order_top
     end
+
+    previous_item = workout_instances[index - 1]
+    previous_item_further = workout_instances[index - 2]
+
+    self.order_index = (previous_item.order_index + previous_item_further.order_index) / 2
+    previous_item
   end
 
   def shift_order_down
     workout_instances = workout_session.workout_instances.order(:order_index)
     index = workout_instances.index self
-    if index == workout_instances.length - 2
-      send_to_order_bottom
-      return
+
+    if index == workout_instances.length - 1
+      return nil
     end
 
-    if !(index == workout_instances.length - 1)
-      next_item_order_index = workout_instances[index + 1].order_index
-      following_item_order_index = workout_instances[index + 2].order_index
-      self.order_index = (next_item_order_index + following_item_order_index) / 2.0
+    if index == workout_instances.length - 2
+      return send_to_order_bottom
     end
+
+    next_item = workout_instances[index + 1]
+    following_item = workout_instances[index + 2]
+
+    self.order_index = (next_item.order_index + following_item.order_index) / 2.0
+    next_item
   end
 
   def send_to_order_top
     workout_instances = workout_session.workout_instances.order(:order_index)
     index = workout_instances.index self
-    if index != 0
-      first_index = workout_session.workout_instances.order(:order_index).first.order_index
-      self.order_index = (first_index / 2)
+    if index == 0
+      return nil
     end
+
+    to_swap_with = workout_session.workout_instances.order(:order_index).first
+    self.order_index = (to_swap_with.order_index / 2)
+
+    to_swap_with
   end
 
   def send_to_order_bottom
     workout_instances = workout_session.workout_instances.order(:order_index)
-    index = workout_instances.index self # TODO: this may or may not work
+    index = workout_instances.index self
 
-    if index != workout_instances.length - 1
-      last_index = workout_session.workout_instances.order(:order_index).last.order_index
-      self.order_index = (last_index + 1.0).floor
+    if index == workout_instances.length - 1
+      return nil
     end
+
+    to_swap_with = workout_session.workout_instances.order(:order_index).last
+    self.order_index = (to_swap_with.order_index + 1.0).floor
+
+    to_swap_with
   end
 
   def self.dup_workout_sets(origin, receiver)

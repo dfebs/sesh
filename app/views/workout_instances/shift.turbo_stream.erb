@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@workout_session, :workouts) do %>
+  <div class="workout-instances" id="<%= dom_id(@workout_session, :workouts) %>">
+    <%= render "workout_instances/workout_instances", workout_instances: @workout_session.workout_instances.order(order_index: :asc) %>
+  </div>
+<% end %>
