@@ -41,6 +41,31 @@ class WorkoutInstancesController < ApplicationController
     end
   end
 
+  def shift
+    @workout_instance = WorkoutInstance.find(params[:id])
+    @workout_session = @workout_instance.workout_session
+    shift_direction = params[:shift_direction]
+
+    case shift_direction
+    when "top"
+      @workout_instance.send_to_order_top
+    when "bottom"
+      @workout_instance.send_to_order_bottom
+    when "up"
+      @workout_instance.shift_order_up
+    when "down"
+      @workout_instance.shift_order_down
+    end
+
+    if @workout_instance.save
+      respond_to do |format|
+        format.turbo_stream
+      end
+    else
+      redirect_to root_path, alert: @workout_instance.errors.full_messages.join(", ")
+    end
+  end
+
   private
   def get_workout_session
     @workout_session = WorkoutSession.find(params[:workout_session_id])

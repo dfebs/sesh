@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_11_195635) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_25_164436) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -59,6 +59,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_11_195635) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "workout_id", null: false
+    t.float "order_index"
     t.index ["workout_id"], name: "index_workout_instances_on_workout_id"
     t.index ["workout_session_id"], name: "index_workout_instances_on_workout_session_id"
   end

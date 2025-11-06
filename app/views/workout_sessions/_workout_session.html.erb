@@ -1,7 +1,7 @@
 <%= render "workout_sessions/title", workout_session: workout_session %>
 
 <div class="workout-instances" id="<%= dom_id(workout_session, :workouts) %>">
-  <%= render "workout_instances/workout_instances", workout_instances: workout_session.workout_instances %>
+  <%= render "workout_instances/workout_instances", workout_instances: workout_session.workout_instances.order(order_index: :asc) %>
 </div>
 
 <br>

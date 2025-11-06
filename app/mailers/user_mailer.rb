@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'hello@dfebs.com'
+  default from: "hello@dfebs.com"
 
   def email_confirmation
     @user = params[:user]

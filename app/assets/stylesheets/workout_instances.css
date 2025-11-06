@@ -35,6 +35,23 @@
   gap: 1em;
 }
 
+.shift-instance-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.shift-instance-controls button {
+  /* opacity: 50%; */
+  background-color: transparent;
+}
+
+.shift-instance-controls button:hover {
+  /* opacity: 50%; */
+  background-color: var(--color-3);
+}
+
 .workout-instance:target {
   border-color: var(--color-links);
 }

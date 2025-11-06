@@ -1,6 +1,9 @@
 <li id="<%= dom_id(workout_set, :list_item) %>">
   <%= turbo_frame_tag combined_dom_id(workout_set.workout_instance, workout_set) do %>
-      <%= workout_set.reps %> rep(s) of <%= workout_set.amount %> <%= workout_set.preferred_unit %>
+      <div class="workout-set-info">
+        <p><%= workout_set.reps %> rep<%= "s" if workout_set.reps > 1 || workout_set.reps == 0 %></p>
+        <p><%= workout_set.amount %> <%= workout_set.preferred_unit %></p>
+      </div>
       <div class="workout-set-controls">
         <% if !workout_set.workout_session.completed? %>
           <%= button_to workout_set_path(workout_set), method: :delete, class: "red-button" do %>

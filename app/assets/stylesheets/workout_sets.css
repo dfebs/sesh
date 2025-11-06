@@ -28,6 +28,10 @@
   margin-right: auto;
 }
 
+.workout-set-info p {
+  margin: 0;
+}
+
 .workout-set-form {
   display: flex;
   flex-direction: row;
