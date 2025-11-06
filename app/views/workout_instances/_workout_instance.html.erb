@@ -1,7 +1,8 @@
+<% completed = workout_instance.workout_session.completed? %>
 <div class="workout-instance" id="<%= dom_id(workout_instance) %>">
   <div class="workout-instance-title">
     <%= link_to workout_instance.workout.name, workout_path(workout_instance.workout) %>
-    <% if !workout_instance.workout_session.completed? %>
+    <% if !completed %>
       <%= button_to workout_instance_path(workout_instance), method: :delete, class: "red-button" do %>
         <%= render "icons/delete" %>
         <span>Delete</span>
@@ -12,23 +13,25 @@
   <%= render "workout_sets/workout_sets", workout_instance: workout_instance %>
 
   <div class="workout-instance-controls">
-    <% if !workout_instance.workout_session.completed? %>
+    <% if !completed %>
       <%= render "workout_sets/new_workout_set_button", workout_instance: workout_instance %>
     <% end %>
 
   </div>
-  <div class="shift-instance-controls">
-    <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "up" } do %>
-      <%= render "icons/arrow_up" %>
+    <% if !completed %>
+      <div class="shift-instance-controls">
+        <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "up" } do %>
+          <%= render "icons/arrow_up" %>
+        <% end %>
+        <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "down" } do %>
+          <%= render "icons/arrow_down" %>
+        <% end %>
+        <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "top" } do %>
+          <%= render "icons/arrow_to_top" %>
+        <% end %>
+        <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "bottom" } do %>
+          <%= render "icons/arrow_to_bottom" %>
+        <% end %>
+      </div>
     <% end %>
-    <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "down" } do %>
-      <%= render "icons/arrow_down" %>
-    <% end %>
-    <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "top" } do %>
-      <%= render "icons/arrow_to_top" %>
-    <% end %>
-    <%= button_to shift_workout_instance_path(workout_instance), method: :post, class: "basic-card-button", params: { shift_direction: "bottom" } do %>
-      <%= render "icons/arrow_to_bottom" %>
-    <% end %>
-  </div>
 </div>
