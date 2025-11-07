@@ -24,9 +24,11 @@ class WorkoutSetsController < ApplicationController
     respond_to do | format |
       if @workout_set.save
         format.turbo_stream
-        format.html { redirect_to @workout_instance, notice: "Successfully created reps" }
+        format.html { redirect_to root_path, notice: "Successfully created reps" }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash.now[:alert] = @workout_set.errors.full_messages.join(", ")
+        format.turbo_stream { render_flash_stream(:unprocessable_entity) }
+        format.html { redirect_to root_path, status: :unprocessable_entity, alert: @workout_set.errors.full_messages.join(", ") }
       end
     end
   end
@@ -57,7 +59,9 @@ class WorkoutSetsController < ApplicationController
         # TODO: Check this works by temporarily turning off turbo
         format.html { redirect_to @workout_set.workout_session, notice: "Successfully updated reps" }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash.now[:alert] = @workout_set_dup.errors.full_messages.join(",")
+        format.turbo_stream { render_flash_stream(:unprocessable_entity) }
+        format.html { redirect_to root_path, status: :unprocessable_entity, alert: @workout_set.errors.full_messages.join(", ") }
       end
     end
   end

@@ -8,6 +8,7 @@ class WorkoutSet < ApplicationRecord
   validates :reps, presence: true, inclusion: { in: 1..5000 }, numericality: { only_integer: true }
   validates :amount_imp, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 15000 }
   validates :amount_metric, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 15000 }
+  validate :check_max_sets, on: [ :create, :duplicate ]
 
   def preferred_unit
     config = workout.author.user_config
@@ -38,5 +39,12 @@ class WorkoutSet < ApplicationRecord
   def truncate_units
     self.amount_imp = self.amount_imp.truncate 2
     self.amount_metric = self.amount_metric.truncate 2
+  end
+
+  def check_max_sets
+    max = 20
+    if workout_session.workout_sets.length >= max
+      errors.add :base, "Max number of sets reached. Max is #{max}"
+    end
   end
 end
