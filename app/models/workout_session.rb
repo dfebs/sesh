@@ -33,7 +33,7 @@ class WorkoutSession < ApplicationRecord
 
   def check_max_sessions
     max = 10
-    if user.workout_sessions.where(date_completed: nil).length > 10
+    if user.workout_sessions.where(date_completed: nil).length >= max
       errors.add :base, "Max number of upcoming workout sessions reached. Max is #{max}"
     end
   end

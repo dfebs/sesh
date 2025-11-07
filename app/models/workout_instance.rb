@@ -24,7 +24,7 @@ class WorkoutInstance < ApplicationRecord
 
   def check_max_instances
     max = 20
-    if workout_session.workout_instances.length > max
+    if workout_session.workout_instances.length >= max
       errors.add :base, "Max number of workout sessions reached. Max is #{max}."
     end
   end
