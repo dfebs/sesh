@@ -18,6 +18,11 @@ body {
   font-family: "Segoe UI", sans-serif;
 }
 
+header form {
+  display: flex;
+  flex-direction: column;
+}
+
 .content,
 #flash {
   padding-top: 0.5rem;

@@ -103,10 +103,18 @@
   margin: 0;
 }
 
-.session-title turbo-frame form {
+.session-title turbo-frame form,
+#title_workout_session form {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.session-title turbo-frame input[type="text"],
+#title_workout_session form input[type="text"] {
+  max-width: 11em;
 }
 
 .session-title form {
