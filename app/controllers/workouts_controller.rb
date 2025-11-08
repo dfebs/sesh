@@ -28,6 +28,12 @@ class WorkoutsController < ApplicationController
   end
 
   def update
+    if params[:tag_ids].nil?
+      flash.now[:alert] = "Must select tags (checkboxes) when editing a workout"
+      render :new, status: :unprocessable_entity
+      return
+    end
+
     begin
       ActiveRecord::Base.transaction do
         @workout.update(workout_params)
@@ -45,6 +51,13 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
+
+    if params[:tag_ids].nil?
+      flash.now[:alert] = "Must select tags (checkboxes) when creating a workout"
+      render :new, status: :unprocessable_entity
+      return
+    end
+
     @workout.author = Current.user
 
     begin
@@ -148,5 +161,8 @@ class WorkoutsController < ApplicationController
 
   def get_workout
     @workout = Workout.find(params[:id])
+  end
+
+  def check_for_tag_ids
   end
 end
