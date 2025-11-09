@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(workout_session, :title) do %>
   <%= form_with model: workout_session do |form| %>
     <%= form.label :title %>
-    <%= form.text_field :title, required: true, maxlength: 20 %>
+    <%= form.text_field :title, required: true, maxlength: 20, autofocus: true %>
 
     <%= form.button class: "green-button" do %>
         <span>Create</span>

@@ -1,6 +1,6 @@
 <%= form_with model: workout, class: "workout-form" do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name, required: true, maxlength: 50 %>
+  <%= form.text_field :name, required: true, maxlength: 50, autofocus: true %>
 
   <%= form.label :description %>
   <%= form.text_area :description, required: true, maxlength: 500 %>
