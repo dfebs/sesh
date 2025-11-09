@@ -8,7 +8,7 @@
 
 <% if !workout_session.completed? %>
   <%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) do %>
-    <%= link_to "Add Workout Instance", new_workout_session_workout_instance_path(workout_session), class: "basic-button" %>
+    <%= link_to "Add Exercise", new_workout_session_workout_instance_path(workout_session), class: "basic-button" %>
   <% end %>
 <% end %>
 
