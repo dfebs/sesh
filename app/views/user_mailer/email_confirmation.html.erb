@@ -1,4 +1,4 @@
-<h1 style=<%= email_style(:h1) %>>Hello from Sesh!</h1>
-<p style=<%= email_style(:p) %>>Here is your link to confirm your email. Sick gains await!</p>
+<h1 style="<%= email_style(:h1) %>">Hello from Sesh!</h1>
+<p style="<%= email_style(:p) %>">Here is your link to confirm your email. Sick gains await!</p>
 
 <%= link_to "Confirm Email", confirm_email_user_url(@user, token: @user.generate_token_for(:email_confirmation)), style: email_style(:href) %>
