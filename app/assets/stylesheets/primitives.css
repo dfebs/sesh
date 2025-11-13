@@ -40,6 +40,7 @@ form {
 
 button,
 .basic-button,
+.basic-button-full,
 .text-only-button,
 .red-button,
 .cancel-button,
@@ -95,19 +96,13 @@ select {
 }
 
 .basic-button svg,
+.basic-button-full svg,
 .basic-card-button svg,
 .green-button svg,
 .cancel-button svg,
 .red-button svg {
-  width: 85%;
+  width: 1.5em;
   height: auto;
-}
-
-/* The logout button was being weird on desktop */
-nav .button_to svg {
-  @media (min-width: 768px) {
-    width: 25%
-  }
 }
 
 .basic-button span,
