@@ -1,5 +1,11 @@
 @import "colors.css";
 
+.new-workout-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
 .workouts {
   display: flex;
   flex-direction: row;

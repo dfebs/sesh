@@ -1,13 +1,15 @@
 <h1>My Exercises</h1>
 
-<%= link_to new_from_templates_workouts_path, class: "basic-button-full" do %>
-  <%= render "icons/template" %>
-  <span>Create From Templates</span>
-<% end %>
+<div class="new-workout-controls">
+  <%= link_to new_from_templates_workouts_path, class: "basic-button-full" do %>
+    <%= render "icons/template" %>
+    <span>Create From Template</span>
+  <% end %>
 
-<%= link_to new_workout_path, class: "basic-button-full" do %>
-  <%= render "icons/plus" %>
-  <span>Create Custom</span>
-<% end %>
+  <%= link_to new_workout_path, class: "basic-button-full" do %>
+    <%= render "icons/plus" %>
+    <span>Create Custom</span>
+  <% end %>
+</div>
 
 <%= render "workouts/workout_cards", workouts: @workouts %>

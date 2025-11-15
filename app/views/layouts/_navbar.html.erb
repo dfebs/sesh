@@ -4,19 +4,13 @@
       <li>
         <%= link_to root_path, class: "basic-button" do %>
           <%= render "icons/home" %>
-          <span>Home</span>
+          <span>Sessions</span>
         <% end %>
       </li>
       <li>
         <%= link_to workouts_path, class: "basic-button" do %>
           <%= render "icons/barbell" %>
           <span>Exercises</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_from_templates_workouts_path, class: "basic-button" do %>
-          <%= render "icons/template" %>
-          <span>Templates</span>
         <% end %>
       </li>
       <li class="nav-elem-right">
