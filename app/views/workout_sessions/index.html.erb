@@ -1,7 +1,7 @@
 <% if Current.user.workouts.any? %>
   <%= render "workout_sessions/new_workout_session_button" %>
 <% else %>
-  <p>You currently have no workouts. See the <%= link_to "Templates", new_from_templates_workouts_path %> <%= render "icons/template" %> page to get started.</p>
+  <p><b>You currently have no exercises. You'll need to create some exercises to use for your sessions! To get started, go to the <%= link_to "Exercises", workouts_path %> <%= render "icons/barbell" %> page</b></p>
 <% end %>
 
 <h1>Upcoming Sessions</h1>
@@ -9,7 +9,7 @@
 <% if !@upcoming_workout_sessions.any? %>
   <div id="no-sessions-notice">
     <p><em id="no-sessions-notice">You have no workout sessions coming up!</em></p>
-    <p><em>Duplicate <%= render "icons/duplicate" %> an existing workout session or create a new one by selecting "New workout session" above.</em></p>
+    <p><em>Duplicate <%= render "icons/duplicate" %> an existing workout session or create a new one by selecting "New workout session" above. Note that you need to have created at least one <%= link_to "exercise", workouts_path %> before being able to do so.</em></p>
   </div>
 <% end %>
 <%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
