@@ -1,13 +1,13 @@
 <h1>Sessions</h1>
 <% if Current.user.workouts.any? %>
   <%= render "workout_sessions/new_workout_session_button" %>
+  <h2>Upcoming Sessions</h2>
   <% if !@upcoming_workout_sessions.any? %>
     <div id="no-sessions-notice">
       <p><em id="no-sessions-notice">You have no workout sessions coming up!</em></p>
-      <p><em>Duplicate <%= render "icons/duplicate" %> an existing workout session or create a new one by selecting "New workout session" above. Note that you need to have created at least one <%= link_to "exercise", workouts_path %> before being able to do so.</em></p>
+      <p><em>Duplicate <%= render "icons/duplicate" %> an existing workout session or create a new one by selecting "New workout session" above.</em></p>
     </div>
   <% end %>
-  <h2>Upcoming Sessions</h2>
   <%= render "workout_sessions/session_cards", group_id: "upcoming", workout_sessions: @upcoming_workout_sessions %>
   <hr>
   <h2>Completed Sessions</h2>
