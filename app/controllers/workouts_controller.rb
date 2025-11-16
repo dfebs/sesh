@@ -42,7 +42,7 @@ class WorkoutsController < ApplicationController
       end
 
       # TODO: might be worth making this go to the show path (i.e. workout_path(@workout))
-      redirect_to workouts_path, notice: "Workout successfully edited"
+      redirect_to workouts_path, notice: "Exercise successfully edited"
     rescue
       flash.now[:alert] = @workout.errors.full_messages.join("")
       render :edit, status: :unprocessable_entity
@@ -66,7 +66,7 @@ class WorkoutsController < ApplicationController
         add_tags_by_id(@workout, params[:tag_ids])
       end
 
-      redirect_to workouts_path, notice: "Workout successfully created"
+      redirect_to workouts_path, notice: "Exercise successfully created"
     rescue ActiveRecord::RecordInvalid
       flash.now[:alert] = @workout.errors.full_messages.join("")
       render :new, status: :unprocessable_entity
