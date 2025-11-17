@@ -1,6 +1,6 @@
 <div class="complete-workout-session" id="<%= dom_id(workout_session, :complete) %>">
   <% if workout_session.completed? %>
-    <p>Session completed on <%= workout_session.date_completed %></p>
+    <p>Session completed on <%= workout_session.date_completed.in_time_zone(Current.user.time_zone).strftime("%a, %b %-d %Y") %></p>
   <% else %>
     <h2>Complete Session</h2>
     <% if workout_session.ready_for_completion? %>

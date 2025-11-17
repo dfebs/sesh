@@ -1,9 +1,13 @@
-<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) do %>
+<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new), class: "new-workout-instance" do %>
   <%= form_with model: [workout_session, workout_instance] do |form| %>
     <%= form.label :workout_id, "Exercise" %>
     <%= form.collection_select :workout_id, Current.user.workouts.order(name: :asc), :id, :name %>
 
-    <%= form.submit class: "basic-button" %>
-    <%= link_to "Cancel", workout_session_path(workout_session), class: "basic-button" %>
+    <%= form.button class: "green-button" do %>
+      <%= render "icons/check" %>
+    <% end %>
+    <%= link_to workout_session_path(workout_session), class: "cancel-button" do %>
+      <%= render "icons/x" %>
+    <% end %>
   <% end %>
 <% end %>

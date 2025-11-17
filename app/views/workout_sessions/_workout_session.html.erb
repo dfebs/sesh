@@ -1,5 +1,4 @@
 <%= render "workout_sessions/title", workout_session: workout_session %>
-
 <div class="workout-instances" id="<%= dom_id(workout_session, :workouts) %>">
   <%= render "workout_instances/workout_instances", workout_instances: workout_session.workout_instances.order(order_index: :asc) %>
 </div>
@@ -7,11 +6,13 @@
 <br>
 
 <% if !workout_session.completed? %>
-  <%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new) do %>
+  <%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new), class: "new-workout-instance" do %>
     <%= link_to "Add Exercise", new_workout_session_workout_instance_path(workout_session), class: "basic-button" %>
   <% end %>
+  <br>
 <% end %>
 
 <%= render "workout_sessions/complete_workout_session", workout_session: workout_session %>
 
-<%= button_to "Delete", workout_session_path(workout_session), method: :delete, data: { turbo: false } %>
+<br>
+<%= button_to "Delete Session", workout_session_path(workout_session), method: :delete, data: { turbo: false }, class: "red-button" %>

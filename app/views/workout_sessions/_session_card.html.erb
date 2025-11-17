@@ -30,7 +30,7 @@
       <% if workout_session.date_completed == Date.today %>
         <em style="color: var(--color-notice)">&#10003; Completed Today!</em>
       <% else %>
-        <em>&#10003; <%= workout_session.date_completed.strftime("%a, %b %-d %Y") %></em>
+        <em>&#10003; <%= workout_session.date_completed.in_time_zone(Current.user.time_zone).strftime("%a, %b %-d %Y") %></em>
       <% end %>
     <% end %>
   </div>
