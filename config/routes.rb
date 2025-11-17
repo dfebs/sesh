@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :users, only: [ :create, :new, :edit ] do
+  resources :users, only: [ :create, :new, :edit, :update ] do
     member do
       get "confirm_email"
       post "send_confirmation_email"

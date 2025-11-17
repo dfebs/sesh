@@ -21,6 +21,15 @@ class UsersController < ApplicationController
     @confirmation_sent_recently = confirmation_sent_recently?
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to root_path, notice: "Successfully updated account settings"
+    else
+      render @user, alert: @user.errors.full_messages.join(", ")
+    end
+  end
+
   def confirm_email
     @user = User.find_by_token_for(:email_confirmation, params[:token])
     @user.email_confirmed = true
@@ -46,7 +55,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.expect user: [ :email_address, :password, :password_confirmation ]
+    params.expect user: [ :email_address, :password, :password_confirmation, :time_zone ]
   end
 
   def confirmation_sent_recently?

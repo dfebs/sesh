@@ -1,0 +1,7 @@
+<%= form_with model: user do |form| %>
+  <%= form.label :time_zone %>
+  <%= form.select :time_zone, Constants::TIME_ZONES, selected: user.time_zone %>
+
+  <%= form.submit "Update Account Settings", class: "basic-button" %>
+<% end %>
+
