@@ -102,7 +102,7 @@ class WorkoutSessionsController < ApplicationController
     @completed_workout_sessions = @workout_sessions.where.not(date_completed: nil).order(date_completed: :desc, updated_at: :desc)
     @completed_sessions_this_week = @completed_workout_sessions.where(date_completed: today.beginning_of_week..today.end_of_week)
     @completed_sessions_last_week = @completed_workout_sessions.where(date_completed: today.beginning_of_week-7.days..today.end_of_week-7.days)
-    @completed_sessions_long_ago = @completed_workout_sessions.where(date_completed: ..today.beginning_of_week-7.days)
+    @completed_sessions_long_ago = @completed_workout_sessions.where(date_completed: ..today.beginning_of_week-8.days)
   end
 
   def authorize_user
