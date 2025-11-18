@@ -2,6 +2,10 @@
   <%= render "workout_instances/workout_instance", workout_instance: @workout_instance, workout_session: @workout_instance.workout_session %>
 <% end %>
 
+<%= turbo_stream.replace combined_dom_id(@workout_instance.workout_session, WorkoutInstance.new) do %>
+  <%= render "workout_instances/new_workout_instance_button", workout_session: @workout_instance.workout_session %>
+<% end %>
+
 <%= turbo_stream.replace dom_id(@workout_instance.workout_session, :complete) do %>
   <%= render "workout_sessions/complete_workout_session", workout_session: @workout_instance.workout_session %>
 <% end %>

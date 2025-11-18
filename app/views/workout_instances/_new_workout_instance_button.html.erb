@@ -1,0 +1,3 @@
+<%= turbo_frame_tag combined_dom_id(workout_session, WorkoutInstance.new), class: "new-workout-instance" do %>
+  <%= link_to "Add Exercise", new_workout_session_workout_instance_path(workout_session), class: "basic-button" %>
+<% end %>
