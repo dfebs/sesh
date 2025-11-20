@@ -5,6 +5,8 @@ class WorkoutsController < ApplicationController
 
   def index
     @workouts = Current.user.workouts.order("lower(name)")
+    workout_names = @workouts.map { |workout| workout.name }
+    @templates = WorkoutTemplates::WORKOUTS.each_with_index.select { |template, _| !workout_names.include? template[:name] }
   end
 
   def new
@@ -76,17 +78,27 @@ class WorkoutsController < ApplicationController
   def new_from_templates
     workouts = Current.user.workouts.map { |workout| workout.name }
     @templates = WorkoutTemplates::WORKOUTS.each_with_index.select { |template, _| !workouts.include? template[:name] }
+    if !@templates.any?
+      redirect_to workouts_path, alert: "There are no more templates for you to add to your workouts."
+    end
   end
 
   def create_from_templates
-    template_indices = params[:template_indices].map &:to_i
+    template_indices = params[:template_indices]
+    if template_indices.nil?
+      flash.now[:alert] = "Please select a template to add."
+      render_flash_stream(:unprocessable_entity)
+      return
+    end
+    template_indices = template_indices.map &:to_i
+
     begin
       ActiveRecord::Base.transaction do
         create_workouts_with_tags_from_templates template_indices
-        redirect_to workouts_path, notice: "Successfully created workouts from templates"
+        redirect_to workouts_path, notice: "Successfully created workouts from templates."
       end
     rescue ActiveRecord::RecordInvalid
-      render new_from_templates, alert: "Could not create workouts from template"
+      render new_from_templates, alert: "Could not create workouts from template."
     end
   end
 
