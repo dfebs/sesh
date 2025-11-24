@@ -91,7 +91,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_21_131200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "workout_type", null: false
-    t.boolean "hidden", default: false, null: false
+    t.boolean "archived", default: false, null: false
     t.index ["author_id"], name: "index_workouts_on_author_id"
   end
 
