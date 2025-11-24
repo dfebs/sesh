@@ -4,7 +4,8 @@ class WorkoutsController < ApplicationController
   before_action :authorize_user, only: %i[ show edit update ]
 
   def index
-    @workouts = Current.user.workouts.order("lower(name)")
+    @archived = params[:archived].nil? ? false : params[:archived]
+    @workouts = Current.user.workouts.where(archived: @archived).order("lower(name)")
     workout_names = @workouts.map { |workout| workout.name }
     @templates = WorkoutTemplates::WORKOUTS.each_with_index.select { |template, _| !workout_names.include? template[:name] }
   end

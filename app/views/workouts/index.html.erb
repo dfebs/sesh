@@ -1,18 +1,23 @@
-<h1>My Exercises</h1>
+<h1>My <%= "Archived " if @archived %>Exercises</h1>
 
-<div class="new-workout-controls">
-  <% if @templates.any? %>
-    <%= link_to new_from_templates_workouts_path, class: "basic-button-full" do %>
-      <%= render "icons/template" %>
-      <span>Create From Template</span>
+<% if !@archived %>
+  <%= link_to "Archived", workouts_path(archived: true) %>
+
+  <div class="new-workout-controls">
+    <% if @templates.any? %>
+      <%= link_to new_from_templates_workouts_path, class: "basic-button-full" do %>
+        <%= render "icons/template" %>
+        <span>Create From Template</span>
+      <% end %>
     <% end %>
-  <% end %>
 
 
-  <%= link_to new_workout_path, class: "basic-button-full" do %>
-    <%= render "icons/plus" %>
-    <span>Create Custom</span>
-  <% end %>
-</div>
+    <%= link_to new_workout_path, class: "basic-button-full" do %>
+      <%= render "icons/plus" %>
+      <span>Create Custom</span>
+    <% end %>
+  </div>
+<% end %>
+
 
 <%= render "workouts/workout_cards", workouts: @workouts %>
