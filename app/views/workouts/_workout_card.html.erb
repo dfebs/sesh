@@ -13,7 +13,7 @@
     <span>Edit</span>
   <% end %>
 
-  <%= link_to root_path, class: "basic-card-button" do %>
+  <%= button_to toggle_archived_workout_path(workout), class: "cancel-button", method: :patch  do %>
     <%= render "icons/archive" %>
     <span>Archive</span>
   <% end %>

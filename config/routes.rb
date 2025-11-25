@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [ :create, :new, :edit, :update ] do
     member do
       get "confirm_email"
@@ -16,6 +15,10 @@ Rails.application.routes.draw do
     collection do
       get "new_from_templates"
       post "create_from_templates"
+    end
+
+    member do
+      patch "toggle_archived"
     end
   end
 

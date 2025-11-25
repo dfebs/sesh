@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
   rate_limit to: 100, within: 1.minute
-  before_action :get_workout, only: %i[ show edit update ]
-  before_action :authorize_user, only: %i[ show edit update ]
+  before_action :get_workout, only: %i[ show edit update toggle_archived ]
+  before_action :authorize_user, only: %i[ show edit update toggle_archived ]
 
   def index
     @archived = params[:archived].nil? ? false : params[:archived]
@@ -28,6 +28,13 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+  end
+
+  def toggle_archived
+    @workout.archived = !@workout.archived
+    @workout.save!
+    # TODO change this
+    redirect_to root_path, notice: "Successfully toggled archive status"
   end
 
   def update
