@@ -2,5 +2,8 @@
   <%= form.label :date_completed %>
   <%= form.date_select :date_completed, end_year: Date.today.year, start_year: 2000, selected: Date.today %>
 
-  <%= form.submit "Complete", class: "basic-button" %>
+  <%= form.button class: "green-button" do %>
+    <%= render "icons/check" %>
+    <span>Complete</span>
+  <% end %>
 <% end %>

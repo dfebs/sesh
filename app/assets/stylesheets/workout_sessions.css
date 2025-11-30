@@ -134,6 +134,10 @@
   box-shadow: 0 0 12px var(--color-2);
 }
 
+.complete-workout-session form select {
+  width: 12rem;
+}
+
 .complete-workout-session h2 {
   margin: 0
 }
