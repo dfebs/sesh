@@ -5,6 +5,7 @@ class WorkoutInstancesController < ApplicationController
 
   def new
     @workout_instance = WorkoutInstance.new
+    @workouts = Current.user.workouts.where(archived: false).order(name: :asc)
   end
 
   def create
