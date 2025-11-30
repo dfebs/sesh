@@ -1,8 +1,9 @@
-<h1>My <%= "Archived " if @archived %>Exercises</h1>
+<h1>
+  <%= @archived ? render("icons/archive") : render("icons/barbell") %>
+  My <%= "Archived " if @archived %>Exercises
+</h1>
 
 <% if !@archived %>
-  <%= link_to "Archived", workouts_path(archived: true) %>
-
   <div class="new-workout-controls">
     <% if @templates.any? %>
       <%= link_to new_from_templates_workouts_path, class: "basic-button-full" do %>
@@ -16,7 +17,18 @@
       <%= render "icons/plus" %>
       <span>Create Custom</span>
     <% end %>
+
+    <%= link_to workouts_path(archived: true), class: "basic-button-full" do %>
+      <%= render "icons/archive" %>
+      <span>Show Archived</span>
+    <% end %>
   </div>
+  <% else %>
+    <%= link_to workouts_path, class: "basic-button-full" do %>
+      <%= render "icons/barbell" %>
+      <span>Back to Exercises</span>
+    <% end %>
+
 <% end %>
 
 

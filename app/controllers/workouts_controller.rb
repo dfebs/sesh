@@ -33,8 +33,10 @@ class WorkoutsController < ApplicationController
   def toggle_archived
     @workout.archived = !@workout.archived
     @workout.save!
-    # TODO change this
-    redirect_to root_path, notice: "Successfully toggled archive status"
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to root_path, notice: "Successfully toggled archive status" }
+    end
   end
 
   def update

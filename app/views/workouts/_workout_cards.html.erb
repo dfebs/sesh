@@ -1,6 +1,6 @@
 <div class="workouts">
   <% workouts.order(name: :asc).each do |workout| %>
-    <div class="workout">
+    <div class="workout", id="<%= dom_id(workout) %>">
       <%= render "workouts/workout_card", workout: workout %>
     </div>
   <% end %>
