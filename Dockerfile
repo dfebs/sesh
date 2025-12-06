@@ -20,9 +20,9 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Litestream
-RUN wget https://github.com/benbjohnson/litestream/releases/download/v0.5.2/litestream-v0.5.2-linux-amd64.deb && \
-    dpkg -i litestream-v0.5.2-linux-amd64.deb && \
-    rm litestream-v0.5.2-linux-amd64.deb
+RUN wget https://github.com/benbjohnson/litestream/releases/download/v0.5.2/litestream-0.5.2-linux-x86_64.deb && \
+    dpkg -i litestream-0.5.2-linux-x86_64.deb && \
+    rm litestream-0.5.2-linux-x86_64.deb
 
 # Set production environment
 ENV RAILS_ENV="production" \
