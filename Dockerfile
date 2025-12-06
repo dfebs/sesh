@@ -19,6 +19,11 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# Install Litestream
+RUN wget https://github.com/benbjohnson/litestream/releases/download/v0.5.2/litestream-v0.5.2-linux-amd64.deb && \
+    dpkg -i litestream-v0.5.2-linux-amd64.deb && \
+    rm litestream-v0.5.2-linux-amd64.deb
+
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
